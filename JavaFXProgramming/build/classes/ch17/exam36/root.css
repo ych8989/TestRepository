@@ -1,0 +1,28 @@
+.root{
+    -fx-backgroung-imges:url("images/background.jpg");
+}
+label{
+    -fx-fount-size:12;
+    -fx-fount-weight:bold;
+    -fx-text-fill:#333333;
+
+
+}
+#welcome-text{
+    -fx-fount-size:35;
+    -fx-fount-family:"Arial Black";
+    -fx-text-fill:linear-gradient(to bottom,darkgray,lightgray);
+    -fx-effect:innershadow(three-pass-box,rgba(0,0,0,0.7),3,0,2,2.1);
+}
+.button{
+    -fx-text-fill:white;
+    -fx-font-family:"Arial Black";
+    -fx-fount-weight:bold;
+    -fx-text-fill:linear-gradient(to bottom,#61a2b1,#2a5058);
+     -fx-effect:dropshadow(three-pass-box,rgba(0,0,0,0.6),10,0,2,2);
+     
+    
+}
+button {
+    -fx-background-color:linear-gradient(to bottom,#2a5858,#61a2b1);      
+}
