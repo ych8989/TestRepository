@@ -1,6 +1,5 @@
 package Setting;
 
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -13,41 +12,36 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class SettingMainController implements Initializable {
+public class SettingSoundController implements Initializable {
 
     @FXML
-    private Button btnSound;
+    private Button btnBack;
     @FXML
-    private Button btnScreen;
+    private Button btnBackHome;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        btnSound.setOnAction(e -> handleBtnSound(e));
-        btnScreen.setOnAction(e -> handleBtnScreen(e));
+        btnBack.setOnAction(e -> handleBtnBack(e));
+        btnBackHome.setOnAction(e -> handleBtnBackHome(e));
     }
 
-    private void handleBtnSound(ActionEvent e) {
+    private void handleBtnBack(ActionEvent e) {
         try {
-            Parent parent = FXMLLoader.load(getClass().getResource("SettingSound.fxml"));
+            Parent parent = FXMLLoader.load(getClass().getResource("SettingMain.fxml"));
             Scene scene = new Scene(parent);
-            Stage primaryStage = (Stage) btnSound.getScene().getWindow();
+            Stage primaryStage = (Stage) btnBack.getScene().getWindow();
             primaryStage.setScene(scene);
         } catch (IOException ex) {
         }
-
     }
 
-    private void handleBtnScreen(ActionEvent e) {
+    private void handleBtnBackHome(ActionEvent e) {
         try {
-           
-            Parent parent = FXMLLoader.load(getClass().getResource("SettingScreen.fxml"));
+            Parent parent = FXMLLoader.load(getClass().getResource("SettingMain.fxml"));
             Scene scene = new Scene(parent);
-            Stage primaryStage = (Stage) btnScreen.getScene().getWindow();
+            Stage primaryStage = (Stage) btnBackHome.getScene().getWindow();
             primaryStage.setScene(scene);
         } catch (IOException ex) {
         }
-
     }
-
 }
-

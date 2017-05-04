@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Notify.NotifyMainController">
+    <children>
+      <ImageView fitHeight="480.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/배경.jpg" />
+         </image>
+      </ImageView>
+        <Label layoutX="65.0" layoutY="36.0" prefHeight="58.0" prefWidth="62.0">
+            <graphic>
+                <ImageView fitHeight="74.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/file.png" />
+               </image></ImageView>
+            </graphic>
+        </Label>
+        <Button fx:id="btnHome" layoutX="662.0" layoutY="36.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+         <graphic>
+                <ImageView fitHeight="39.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/home(white).png" />
+               </image>
+            </ImageView>
+         </graphic>
+        </Button>
+        <Button fx:id="btnBack" layoutX="664.0" layoutY="348.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitHeight="36.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/back(white).png" />
+               </image></ImageView>
+            </graphic>
+        </Button>
+        <TableView fx:id="tableView" layoutX="206.0" layoutY="141.0" prefHeight="198.0" prefWidth="389.0">
+            <columns>
+                <TableColumn prefWidth="75.0" text="공시처" />
+                <TableColumn prefWidth="75.0" text="일시" />
+                <TableColumn prefWidth="238.0" text="제목" />
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>
