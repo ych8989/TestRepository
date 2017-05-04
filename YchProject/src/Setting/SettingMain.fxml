@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="480.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Setting.SettingMainController">
+   <children>
+      <ImageView fitHeight="480.0" fitWidth="800.0" pickOnBounds="true">
+         <image>
+            <Image url="@image/배경.jpg" />
+         </image></ImageView>
+      <Button fx:id="btnSound" layoutX="136.0" layoutY="176.0" mnemonicParsing="false" prefHeight="107.0" prefWidth="154.0" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="85.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/Sound.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnScreen" layoutX="537.0" layoutY="172.0" mnemonicParsing="false" prefHeight="115.0" prefWidth="160.0" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="98.0" fitWidth="242.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/Screen.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label layoutX="29.0" layoutY="14.0" prefHeight="41.0" prefWidth="56.0" style="-fx-background-color: transparent;" />
+      <Button layoutX="623.0" layoutY="42.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="63.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/home(white).png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="617.0" layoutY="366.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="62.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/back(white).png" />
+               </image></ImageView>
+         </graphic>
+      </Button>
+      <ImageView fitHeight="41.0" fitWidth="67.0" layoutX="43.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/settings.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

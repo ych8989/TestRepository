@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="380.0" prefWidth="485.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+      <ImageView fitHeight="480.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" />
+        <Label layoutX="21.0" layoutY="38.0" prefHeight="36.0" prefWidth="81.0" text="소리">
+         <graphic>
+            <ImageView fitHeight="36.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true" />
+         </graphic></Label>
+        <Label layoutX="74.0" layoutY="139.0" text="벨소리  선택" />
+        <ComboBox fx:id="comboPublic" layoutX="224.0" layoutY="135.0" prefWidth="150.0" promptText="선택하세요" />
+        <Label layoutX="82.0" layoutY="217.0" text="음량 조절" />
+        <Button layoutX="355.0" layoutY="271.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="113.0" text="뒤로가기">
+         <graphic>
+            <ImageView fitHeight="23.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true" />
+         </graphic></Button>
+        <Button fx:id="btnCancel" layoutX="368.0" layoutY="27.0" mnemonicParsing="false" text="홈">
+         <graphic>
+            <ImageView fitHeight="51.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true" />
+         </graphic></Button>
+      <Slider layoutX="229.0" layoutY="225.0" />
+    </children>
+</AnchorPane>
