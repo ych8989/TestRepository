@@ -26,6 +26,7 @@
 		<img src="/WebApplication/resources/image/member0<%=i%>.png" width="50" height="50"/>
 		<%}%>
 		<br/>
+                //위에 적용된 주소로......
 		<c:forEach begin="1" end="5" step="1" varStatus="status">
 			<img src="/WebApplication/resources/image/member0${status.count}.png" width="50" height="50"/>
 		</c:forEach>

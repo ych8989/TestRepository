@@ -21,6 +21,7 @@
 	</head>
 	<body>
 		<h1>다른 패키지 클래스 사용</h1>
+                //외부 파일의 내용을 가져와 현제 에 추가 하는것 =include
 		<%@include file="exam02_include.jsp"%>
 	</body>
 </html>

@@ -19,6 +19,7 @@
 			function handleBtn2() {
 				pop1.close();
 			}
+                        //중요(매1초마다 함수를 실행)
 			function handleBtn3() {
 				work1 = window.setInterval(function() {
 					console.log(new Date());

@@ -11,10 +11,11 @@
 		<script>
 			//객체 생성
 			var car = {
-				//필드(속성)
+				//필드(속성)  따움표 붙혀라! 
 				"model": "승용차",
 				"company": "현대",
 				"speed": 0,
+                                //메소드
 				"start": function() {
 					console.log("시동을 겁니다.");
 				 },
