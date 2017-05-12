@@ -12,57 +12,60 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/http")
 public class Exam08HttpController {
 
-    @RequestMapping(value = "/exam01", method = RequestMethod.GET)
-    public String exam01GET() {
-        System.out.println("exam01Get()...");
-        return "http/exam01";
-    }
+	@RequestMapping(value = "/exam01", method = RequestMethod.GET)
+	public String exam01Get() {
+		System.out.println("exam01Get()....");
+		return "http/exam01";
+	}
 
-    @RequestMapping(value = "/exam01", method = RequestMethod.POST)
-    public String exam01POST() {
-        System.out.println("exam01Post()...");
-        return "http/exam01";
-    }
+	@RequestMapping(value = "/exam01", method = RequestMethod.POST)
+	public String exam01POST() {
+		System.out.println("exam01POST()....");
+		return "http/exam01";
+	}
 
-    @RequestMapping("/exam02")
-    public String exam02(HttpServletRequest request, Model model) {
-        String method = request.getMethod();
-        String uri = request.getRequestURI();
-        String queryString = request.getQueryString();
-        String type = request.getParameter("type");
-        int bno = Integer.parseInt(request.getParameter("bno"));
-        String[] hobby = request.getParameterValues("hobby");
+	// request 요청 HTTP의 정보를 가지고 있는 객체
+	@RequestMapping("/exam02")
+	public String exam02(HttpServletRequest request, Model model) {
+		String method = request.getMethod();
+		String uri = request.getRequestURI();
+		String queryString = request.getQueryString();
+		String type = request.getParameter("type");
+		int bno = Integer.parseInt(request.getParameter("bno"));
+		String[] hobby = request.getParameterValues("hobby");
 
-        String userAgent = request.getHeader("User-Agent");
-        if (userAgent.contains("MSIE") || userAgent.contains("Trident")) {
-            userAgent = "IE11 이하 브라우저";
-        } else if (userAgent.contains("Edge")) {
-            userAgent = "엣지 브라우저";
-        } else if (userAgent.contains("Chrome")) {
-            userAgent = "크롬 브라우저";
-        }
+		String userAgent = request.getHeader("User-Agent");
+		if (userAgent.contains("MSIE") || userAgent.contains("Trident")) {
+			userAgent = "IE11 이하 브라우저";
+		} else if (userAgent.contains("Edge")) {
+			userAgent = "엣지 브라우저";
+		} else if (userAgent.contains("Chrome")) {
+			userAgent = "크롬 브라우저";
+		}
 
-        model.addAttribute("method", method);
-        model.addAttribute("uri", uri);
-        model.addAttribute("queryString", queryString);
-        model.addAttribute("type", type);
-        model.addAttribute("bno", bno);
-        model.addAttribute("hobby", hobby);
-        model.addAttribute("userAgent", userAgent);
-        return "http/exam02";
-    }
+		model.addAttribute("method", method);
+		model.addAttribute("uri", uri);
+		model.addAttribute("queryString", queryString);
+		model.addAttribute("type", type);
+		model.addAttribute("bno", bno);
+		model.addAttribute("userAgent", userAgent);
+		model.addAttribute("hobby", hobby);
 
-    @RequestMapping("/exam03")
-    public String exam03(
-            @RequestParam String type,
-            @RequestParam("bno") int boardNo,
-            @RequestParam String[] hobby,
-            @RequestHeader("User-Agent") String userAgent, Model model) {
-        model.addAttribute("type", type);
-        model.addAttribute("bno", boardNo);
-        model.addAttribute("hobby", hobby);
-        model.addAttribute("userAgent", userAgent);
-        return "http/exam02";
+		return "http/exam02";
+	}
 
-    }
+	@RequestMapping("/exam03")
+	public String exam03(
+			@RequestParam String type,
+			@RequestParam("bno") int boardNo,
+			String[] hobby,
+			@RequestHeader("User-Agent") String userAgent,
+			Model model) {
+		model.addAttribute("type", type);
+		model.addAttribute("bno", boardNo);
+		model.addAttribute("userAgent", userAgent);
+		model.addAttribute("hobby", hobby);
+
+		return "http/exam02";
+	}
 }
