@@ -2,23 +2,22 @@ package ch18.exam22;
 
 import java.io.Serializable;
 
-public class Member implements Serializable {
-    //Field
+public class Member implements Serializable{
     private static final long serialVersionUID = 1;
     private String name;
     private int age;
     private String job;
-    //Constructor
+    
     public Member(String name, int age) {
         this.name = name;
         this.age = age;
-    }    
-    //Method
+    }
+
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setMname(String name) {
         this.name = name;
     }
 
@@ -29,4 +28,5 @@ public class Member implements Serializable {
     public void setAge(int age) {
         this.age = age;
     }
+    
 }
