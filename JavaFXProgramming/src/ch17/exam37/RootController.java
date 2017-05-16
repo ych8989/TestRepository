@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ch17.exam37;
 
 import java.net.URL;
@@ -24,29 +19,27 @@ public class RootController implements Initializable {
     private Button btnStart;
     @FXML
     private Button btnStop;
+    
     private boolean stop;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        btnStart.setOnAction(e -> handleBtnStart(e));
-        btnStop.setOnAction(e -> handleBtnStop(e));
-    }
+        btnStart.setOnAction(e->handleBtnStart(e));
+        btnStop.setOnAction(e->handleBtnStop(e));
+    }    
 
-    public void handleBtnStart(ActionEvent e) {
+    private void handleBtnStart(ActionEvent e) {
         stop = false;
         Thread thread = new Thread() {
             @Override
             public void run() {
                 SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-                while (!stop) {
+                while(!stop) {
                     String strTime = sdf.format(new Date());
-                    Platform.runLater(() -> {
+                    Platform.runLater(()->{
                         lblTime.setText(strTime);
                     });
-                    try {
-                        Thread.sleep(100);
-                    } catch (Exception e) {
-                    }
+                    try { Thread.sleep(100); } catch(Exception e) {}
                 }
             }
         };
@@ -57,4 +50,5 @@ public class RootController implements Initializable {
     private void handleBtnStop(ActionEvent e) {
         stop = true;
     }
+    
 }

@@ -19,17 +19,18 @@ public class RootController implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		btnLogin.setOnAction(e -> handleBtnLogin(e));
-	}
+		btnLogin.setOnAction(e->handleBtnLogin(e));
+	}	
 
 	private void handleBtnLogin(ActionEvent e) {
 		try {
 			Parent parent = FXMLLoader.load(getClass().getResource("login.fxml"));
 			Scene scene = new Scene(parent);
-			Stage primaryStage = (Stage) btnLogin.getScene().getWindow();
+			Stage primaryStage = (Stage)btnLogin.getScene().getWindow();
 			primaryStage.setScene(scene);
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
 	}
+	
 }

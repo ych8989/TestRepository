@@ -1,64 +1,58 @@
-<%-- 
-    Document   : html
-    Created on : 2017. 4. 25, ì˜¤í›„ 12:10:46
-    Author     : Administrator
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html;charset=EUC-KR"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>JSP Page</title>
 		<script>
 			function handleBtnNaver() {
-				console.log("handleBtnNaver()....");
+				console.log("handleBtnNaver()...");
 				location.href = "http://www.naver.com";
 			}
 			function handleBtnGoogle() {
-				console.log("handleBtnGoogle()....");
-				location.href = "http://www.google.com";
+				console.log("handleBtnNaver()...");
+				location.href="http://www.google.com";
 			}
 		</script>
-    </head>
-    <body>
-        <h1>íƒœê·¸ ì¢…ë¥˜</h1>
-        <h3>ë§í¬ íƒœê·¸</h3>
-		<a href="http://www.naver.com">ë„¤ì´ë²„</a></br>
-
-		<h3>ë²„íŠ¼ íƒœê·¸</h3>
-		<button onclick="handleBtnNaver()">ë„¤ì´ë²„</button>
-		<button onclick="handleBtnGoogle()">êµ¬ê¸€</button>
-		<input type="button" onclick="handleBtnNaver()" value="ë„¤ì´ë²„">
-
-		<h3>ì´ë¯¸ì§€ íƒœê·¸</h3>
-		<img src="/WebApplication/resources/image/jeep.png" alt="jeep" width="600">
-		<input type="image" src="/WebApplication/resources/image/jeep.png" width="600">
-
-		<h3>ì»¨í…Œì´ë„ˆ íƒœê·¸</h3>
+	</head>
+	<body>
+		<h1>ÅÂ±× Á¾·ù</h1>
+		
+		<h3>¸µÅ© ÅÂ±×</h3>
+		<a href="http://www.naver.com">³×ÀÌ¹ö</a> <br/>
+		
+		<h3>¹öÆ° ÅÂ±×</h3>
+		<button onclick="handleBtnNaver()">³×ÀÌ¹ö</button>
+		<button onclick="handleBtnGoogle()">±¸±Û</button>
+		<input type="button" onclick="handleBtnNaver()" value="³×ÀÌ¹ö"/>
+		
+		<h3>ÀÌ¹ÌÁö ÅÂ±×</h3>
+		<img src="/WebApplication/resources/image/spring.png" alt="Spring" width="200"/>
+		<input type="image" src="/WebApplication/resources/image/spring.png"/>
+		
+		<h3>ÄÁÅ×ÀÌ³Ê ÅÂ±×</h3>
 		<div>
-			<img src="/WebApplication/resources/image/jeep.png" alt="jeep" width="600">
-			<button onclick="handleBtnNaver()">ë„¤ì´ë²„</button>
+			<button onclick="handleBtnNaver()">³×ÀÌ¹ö</button>
+			<img src="/WebApplication/resources/image/spring.png" alt="Spring" width="200"/>
 		</div>
-
-		<h3>í¼ íƒœê·¸</h3>
+		<div>
+			<button onclick="handleBtnNaver()">³×ÀÌ¹ö</button>
+			<img src="/WebApplication/resources/image/spring.png" alt="Spring" width="200"/>
+		</div>
+		
+		<h3>Æû ÅÂ±×</h3>
 		<form>
-			ì´ë¦„ : <input type="text"> </br>
-			ë‚˜ì´ : <input type="number"> </br>
-			ìƒë…„ì›”ì¼ : <input type="date"> </br>
-			ì„±ë³„ : <input type= "radio" name="sex"> ë‚¨ <input type="radio" name="sex"> ì—¬ </br>
-			ê´€ì‹¬ë¶„ì•¼ :
-			<input type= "checkbox"> ìë°”
-			<input type= "checkbox"> ìë°”FX
-			<input type= "checkbox"> ìŠ¤í”„ë§ </br>
-			<input type="button" value="ì¼ë°˜ë²„íŠ¼">
-			<input type="reset" value="ë¦¬ì…‹ë²„íŠ¼">
-			<input type="submit" value="ì œì¶œë²„íŠ¼">
-			</br>
-			</br>
-			</br>
+			ÀÌ¸§: <input type="text"/> <br/>
+			³ªÀÌ: <input type="number"/> <br/>
+			»ı³â¿ùÀÏ: <input type="date"/> <br/>
+			¼ºº°: <input type="radio" name="sex"/>³² <input type="radio" name="sex"/>¿© <br/>
+			°ü½ÉºĞ¾ß: 
+				<input type="checkbox"/>ÀÚ¹Ù
+				<input type="checkbox"/>ÀÚ¹ÙFX
+				<input type="checkbox"/>½ºÇÁ¸µ <br/>
+			<input type="button" value="ÀÏ¹İ¹öÆ°"/>	
+			<input type="reset" value="¸®¼Â¹öÆ°"/>	
+			<input type="submit" value="Á¦Ãâ¹öÆ°"/>	
 		</form>
-
-
-    </body>
+	</body>
 </html>

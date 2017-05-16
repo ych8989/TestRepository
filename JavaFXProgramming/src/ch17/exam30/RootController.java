@@ -16,12 +16,12 @@ public class RootController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        anchorPane.getStylesheets().add(getClass().getResource("root.css").toString());
-
-        btnChangeCSS.setOnAction(e -> {
+        //anchorPane.getStylesheets().add(getClass().getResource("root.css").toString());
+        
+        btnChangeCSS.setOnAction(e->{
             anchorPane.getStylesheets().clear();
             anchorPane.getStylesheets().add(getClass().getResource("root2.css").toString());
         });
-    }
-
+    }    
+    
 }

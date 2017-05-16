@@ -9,7 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
-public class Appmain extends Application {
+public class AppMain extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -21,18 +21,18 @@ public class Appmain extends Application {
         textField.setPrefWidth(200);
         
         Button button = new Button("확인");
+        
         ObservableList list = hbox.getChildren();
         list.add(textField);
         list.add(button);
-
+        
         Scene scene = new Scene(hbox);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
     public static void main(String[] args) {
-
         launch(args);
     }
-
+    
 }

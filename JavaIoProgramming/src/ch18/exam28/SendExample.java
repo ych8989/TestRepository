@@ -7,21 +7,19 @@ import java.net.InetSocketAddress;
 import java.net.SocketException;
 
 public class SendExample {
-
     public static void main(String[] args) throws SocketException, IOException {
         DatagramSocket datagramSocket = new DatagramSocket();
-
+        
         String strData = "Hello";
         byte[] data = strData.getBytes();
         DatagramPacket datagramPacket = new DatagramPacket(
                 data,
                 data.length,
-                new InetSocketAddress("192.168.3.37", 50002)
+                new InetSocketAddress("192.168.3.35", 50002)
         );
-
+        
         datagramSocket.send(datagramPacket);
-
+        
         datagramSocket.close();
-
     }
 }

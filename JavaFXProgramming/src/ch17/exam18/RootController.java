@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -29,7 +30,7 @@ public class RootController implements Initializable {
     @FXML
     private Button btnReg;
     @FXML
-    private Button bteCancel;
+    private Button btnCancel;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -37,21 +38,19 @@ public class RootController implements Initializable {
         value.add("공개");
         value.add("비공개");
         comboPublic.setItems(value);
-    }
-
-    public void btnRegHandle() {
+    }    
+    
+    public void btnRegHandle(ActionEvent event) {
         String title = txtTitle.getText();
         String password = txtPassword.getText();
         String strPublic = comboPublic.getValue();
         LocalDate localDate = dateExit.getValue();
         String content = txtContent.getText();
-
-        System.out.println("title:" + title);
-        System.out.println("password:" + password);
-        System.out.println("strPublic:" + strPublic);
-        System.out.println("localDate:" + localDate);
-        System.out.println("content:" + content);
-
-    }
-
+        
+        System.out.println("title: " + title);
+        System.out.println("password: " + password);
+        System.out.println("strPublic: " + strPublic);
+        System.out.println("localDate: " + localDate.toString());
+        System.out.println("content: " + content);
+    } 
 }

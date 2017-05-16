@@ -5,12 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class Exam02HtmlController {
-
-	// http://localhost:8080/WebApplication 까지 생략
 	@RequestMapping("/html/exam01")
 	public String html() {
-		return "/html/exam01";
-		// WEB-INF/views .jsp 생략
+		return "html/exam01";
 	}
-
 }

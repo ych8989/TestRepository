@@ -22,23 +22,24 @@ public class LoginController implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		btnMain.setOnAction(e -> handleBtnMain(e));
-	}
+		btnMain.setOnAction(e->handleBtnMain(e));
+	}	
 
 	private void handleBtnMain(ActionEvent e) {
-		StackPane rootPane = (StackPane) btnMain.getScene().getRoot();
+		StackPane rootPane = (StackPane)btnMain.getScene().getRoot();
 
-		login.setOpacity(1);//초기값:1
-
-		KeyValue keyValue = new KeyValue(login.opacityProperty(), 0);//무었을 :translateX,종료값:0
+		login.setOpacity(1);  //초기값: 1
+		
+		KeyValue keyValue = new KeyValue(login.opacityProperty(), 0); //무엇을: translateX, 종료값: 0
 		KeyFrame keyFrame = new KeyFrame(
-						Duration.millis(500),
-						event->rootPane.getChildren().remove(login),
-						keyValue
-		);//애니매이션 진행 시간:0.1초
+			Duration.millis(500), 
+			event -> rootPane.getChildren().remove(login), 
+			keyValue
+		); //애니메이션 진행 시간: 0.1초
 
 		Timeline timeline = new Timeline();
 		timeline.getKeyFrames().add(keyFrame);
 		timeline.play();
 	}
+	
 }

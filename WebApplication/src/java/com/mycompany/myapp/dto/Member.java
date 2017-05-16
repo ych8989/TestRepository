@@ -1,13 +1,11 @@
 package com.mycompany.myapp.dto;
 
 public class Member {
-
 	private String name;
 	private int age;
-
-	public Member() {
-	}
-
+	
+	public Member() {}
+	
 	public Member(String name, int age) {
 		this.name = name;
 		this.age = age;
@@ -28,5 +26,4 @@ public class Member {
 	public void setAge(int age) {
 		this.age = age;
 	}
-
 }

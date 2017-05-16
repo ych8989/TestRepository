@@ -6,7 +6,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class ServerExample1 {
-
     public static void main(String[] args) {
         ServerSocket serverSocket = null;
         try {
@@ -17,10 +16,10 @@ public class ServerExample1 {
             //연결 기다리기
             Socket socket = serverSocket.accept();
             //클라이언트의 정보 얻기
-            InetSocketAddress isa = (InetSocketAddress) socket.getRemoteSocketAddress();
+            InetSocketAddress isa = (InetSocketAddress)socket.getRemoteSocketAddress();
             System.out.println(isa.toString());
             System.out.println(isa.getHostName());
-            //통신하기
+            //통신 하기
             
             //연결 끊기
             socket.close();
@@ -28,10 +27,10 @@ public class ServerExample1 {
             ex.printStackTrace();
         }
         
-        // ServerSocket 이 포트 5001을 현재 사용하고 있는냐?
-        if(!serverSocket.isClosed()){
-            //ServerSocket 닫기5001번을 해제한다.)
-            try {serverSocket.close();} catch (IOException ex1) {}
+        //ServerSocket이 포트 50001번을 현재 사용하고 있는냐?
+        if(!serverSocket.isClosed()) {
+            //ServerSocket 닫기(포트 50001번을 해제한다.)
+            try { serverSocket.close(); } catch (IOException ex1) {}
         }
     }
 }

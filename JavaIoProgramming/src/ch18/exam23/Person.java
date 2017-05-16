@@ -1,13 +1,11 @@
 package ch18.exam23;
 
 public class Person {
-
     private String name;
     private int age;
-
-    public Person() {
-    }
-
+    
+    public Person() {}
+    
     public Person(String name, int age) {
         this.name = name;
         this.age = age;
@@ -28,5 +26,4 @@ public class Person {
     public void setName(String name) {
         this.name = name;
     }
-
 }

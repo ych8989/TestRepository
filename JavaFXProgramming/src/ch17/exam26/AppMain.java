@@ -1,6 +1,5 @@
 package ch17.exam26;
 
-import ch17.exam25.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

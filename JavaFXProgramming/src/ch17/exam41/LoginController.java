@@ -18,15 +18,16 @@ public class LoginController implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		btnMain.setOnAction(e -> handleBtnMain(e));
-	}
+		btnMain.setOnAction(e->handleBtnMain(e));
+	}	
 
 	private void handleBtnMain(ActionEvent e) {
 		//how1
-		//RootController.rootPane.getChildren().remove(1);
-
+		//RootController.rootPane.getChildren().remove(login);
+		
 		//how2
-		StackPane rootPane = (StackPane) btnMain.getScene().getRoot();
+		StackPane rootPane = (StackPane)btnMain.getScene().getRoot();
 		rootPane.getChildren().remove(login);
 	}
+	
 }

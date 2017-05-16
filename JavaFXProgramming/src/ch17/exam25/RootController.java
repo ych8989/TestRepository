@@ -28,79 +28,84 @@ public class RootController implements Initializable {
     private Button btnStop;
     @FXML
     private Slider sliderVolume;
-
     @FXML
     private ProgressBar progressBar;
     @FXML
     private ProgressIndicator progressIndicator;
     @FXML
     private Label labelTime;
-
+    
     private boolean endOfMedia;
-
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         Media media = new Media(getClass().getResource("media/video.m4v").toString());
-       // Media media = new Media(getClass().getResource("media/audio.wav").toString());
+        Media media = new Media(getClass().getResource("media/video.m4v").toString());
+        //Media media = new Media(getClass().getResource("media/audio.wav").toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         mediaView.setMediaPlayer(mediaPlayer);
-
-        mediaPlayer.setOnReady(() -> {
+        
+        mediaPlayer.setOnReady(()->{
             btnPlay.setDisable(false);
-            btnPause.setDisable(true);
-            btnStop.setDisable(true);
-            labelTime.setText(" 0 /" + mediaPlayer.getTotalDuration().toSeconds() + "초");
+            btnPause.setDisable(true); 
+            btnStop.setDisable(true);      
+            labelTime.setText("0 / " + (int)mediaPlayer.getTotalDuration().toSeconds() + " 초");
         });
-        mediaPlayer.setOnPlaying(() -> {
-            btnPlay.setDisable(true);
-            btnPause.setDisable(false);
+        
+        mediaPlayer.setOnPlaying(()->{
+            btnPlay.setDisable(true); 
+            btnPause.setDisable(false); 
             btnStop.setDisable(false);
         });
-        mediaPlayer.setOnPaused(() -> {
-            btnPlay.setDisable(false);
-            btnPause.setDisable(true);
-            btnStop.setDisable(true);
-        });
-        mediaPlayer.setOnStopped(() -> {
-            btnPlay.setDisable(false);
-            btnPause.setDisable(true);
+        
+        mediaPlayer.setOnPaused(()->{
+            btnPlay.setDisable(false); 
+            btnPause.setDisable(true); 
             btnStop.setDisable(false);
         });
-        mediaPlayer.setOnEndOfMedia(() -> {
+        
+        mediaPlayer.setOnStopped(()->{
+            btnPlay.setDisable(false); 
+            btnPause.setDisable(true); 
+            btnStop.setDisable(true);
+        });
+        
+        mediaPlayer.setOnEndOfMedia(()->{
             endOfMedia = true;
-            btnPlay.setDisable(false);
-            btnPause.setDisable(true);
+            btnPlay.setDisable(false); 
+            btnPause.setDisable(true); 
             btnStop.setDisable(true);
             progressBar.setProgress(1.0);
             progressIndicator.setProgress(1.0);
         });
-
-        btnPlay.setOnAction(event -> {
-            if (endOfMedia) {
+        
+        btnPlay.setOnAction(event -> { 
+            if(endOfMedia) {
                 mediaPlayer.stop();
                 mediaPlayer.seek(mediaPlayer.getStartTime());
             }
-            mediaPlayer.play();
+            mediaPlayer.play(); 
             endOfMedia = false;
         });
         btnPause.setOnAction(event -> mediaPlayer.pause());
         btnStop.setOnAction(event -> mediaPlayer.stop());
-
+        
         sliderVolume.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-
+                mediaPlayer.setVolume(newValue.doubleValue() / 100.0);
             }
         });
         sliderVolume.setValue(50);
+        
         mediaPlayer.currentTimeProperty().addListener(new ChangeListener<Duration>() {
             @Override
             public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
                 double progress = newValue.toSeconds() / mediaPlayer.getTotalDuration().toSeconds();
                 progressBar.setProgress(progress);
                 progressIndicator.setProgress(progress);
-                labelTime.setText(newValue.toSeconds() + "/" + mediaPlayer.getTotalDuration().toSeconds() + "초");
+                labelTime.setText((int)newValue.toSeconds() + " / " + (int)mediaPlayer.getTotalDuration().toSeconds() + " 초");
             }
         });
-    }
+    }    
+    
 }

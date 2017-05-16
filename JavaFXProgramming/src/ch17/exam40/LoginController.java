@@ -1,13 +1,17 @@
 package ch17.exam40;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
 public class LoginController implements Initializable {
 
@@ -18,15 +22,18 @@ public class LoginController implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		btnMain.setOnAction(e -> handleBtnMain(e));
-	}
+		btnMain.setOnAction(e->handleBtnMain(e));
+	}	
 
 	private void handleBtnMain(ActionEvent e) {
-		//how1
-		//RootController.rootPane.getChildren().remove(login);
-
-		//how2
-		StackPane rootPane = (StackPane) btnMain.getScene().getRoot();
-		rootPane.getChildren().remove(login);
+		try {
+			Parent parent = FXMLLoader.load(getClass().getResource("root.fxml"));
+			Scene scene = new Scene(parent);
+			Stage primaryStage = (Stage)btnMain.getScene().getWindow();
+			primaryStage.setScene(scene);
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
 	}
+	
 }

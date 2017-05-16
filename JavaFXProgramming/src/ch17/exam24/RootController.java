@@ -21,51 +21,54 @@ public class RootController implements Initializable {
     private Button btnStop;
 
     private boolean endOfMedia;
-
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Media media = new Media(getClass().getResource("media/video.m4v").toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         mediaView.setMediaPlayer(mediaPlayer);
-
-        mediaPlayer.setOnReady(() -> {
+        
+        mediaPlayer.setOnReady(()->{
             btnPlay.setDisable(false);
-            btnPause.setDisable(true);
-            btnStop.setDisable(true);
+            btnPause.setDisable(true); 
+            btnStop.setDisable(true);            
         });
-        mediaPlayer.setOnPlaying(() -> {
-            btnPlay.setDisable(true);
-            btnPause.setDisable(false);
+        
+        mediaPlayer.setOnPlaying(()->{
+            btnPlay.setDisable(true); 
+            btnPause.setDisable(false); 
             btnStop.setDisable(false);
         });
-        mediaPlayer.setOnPaused(() -> {
-            btnPlay.setDisable(false);
-            btnPause.setDisable(true);
-            btnStop.setDisable(true);
-        });
-        mediaPlayer.setOnStopped(() -> {
-            btnPlay.setDisable(false);
-            btnPause.setDisable(true);
+        
+        mediaPlayer.setOnPaused(()->{
+            btnPlay.setDisable(false); 
+            btnPause.setDisable(true); 
             btnStop.setDisable(false);
         });
-        mediaPlayer.setOnEndOfMedia(() -> {
+        
+        mediaPlayer.setOnStopped(()->{
+            btnPlay.setDisable(false); 
+            btnPause.setDisable(true); 
+            btnStop.setDisable(true);
+        });
+        
+        mediaPlayer.setOnEndOfMedia(()->{
             endOfMedia = true;
-            btnPlay.setDisable(false);
-            btnPause.setDisable(true);
+            btnPlay.setDisable(false); 
+            btnPause.setDisable(true); 
             btnStop.setDisable(true);
         });
-
-        btnPlay.setOnAction(event -> {
-            if (endOfMedia) {
+        
+        btnPlay.setOnAction(event -> { 
+            if(endOfMedia) {
                 mediaPlayer.stop();
                 mediaPlayer.seek(mediaPlayer.getStartTime());
             }
-            mediaPlayer.play();
+            mediaPlayer.play(); 
             endOfMedia = false;
         });
         btnPause.setOnAction(event -> mediaPlayer.pause());
         btnStop.setOnAction(event -> mediaPlayer.stop());
-
-    }
-
+    }    
+    
 }

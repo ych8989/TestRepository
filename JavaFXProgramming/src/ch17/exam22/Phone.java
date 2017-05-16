@@ -1,13 +1,11 @@
 package ch17.exam22;
 
 public class Phone {
-
     private String image;
     private String name;
     private String content;
-
-    public Phone() {
-    }
+    
+    public Phone() {}
 
     public Phone(String image, String name, String content) {
         this.image = image;

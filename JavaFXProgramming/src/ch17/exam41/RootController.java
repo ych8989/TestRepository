@@ -17,14 +17,14 @@ public class RootController implements Initializable {
 	private Button btnLogin;
 	@FXML
 	private StackPane stackPane;
-
+	
 	public static StackPane rootPane;
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		rootPane = stackPane;
-		btnLogin.setOnAction(e -> handleBtnLogin(e));
-	}
+		btnLogin.setOnAction(e->handleBtnLogin(e));
+	}	
 
 	private void handleBtnLogin(ActionEvent e) {
 		try {
@@ -34,4 +34,5 @@ public class RootController implements Initializable {
 			ex.printStackTrace();
 		}
 	}
+	
 }

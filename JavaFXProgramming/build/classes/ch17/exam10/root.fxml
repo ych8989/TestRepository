@@ -7,32 +7,36 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<TilePane id="AnchorPane" prefHeight="100.0" prefTileHeight="100.0" prefTileWidth="100.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+
+<TilePane prefHeight="100.0" prefTileHeight="100.0" prefTileWidth="100.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
    <children>
       <ImageView pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@fruit2.jpg" />
+            <Image url="@images/fruit1.jpg" />
          </image>
       </ImageView>
-       <ImageView pickOnBounds="true" preserveRatio="true">
+      <ImageView pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@fruit3.jpg" />
+            <Image url="@images/fruit2.jpg" />
          </image>
-      </ImageView>
-       <ImageView pickOnBounds="true" preserveRatio="true">
+      </ImageView>   
+      
+      <ImageView pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@fruit4.jpg" />
+            <Image url="@images/fruit3.jpg" />
          </image>
-      </ImageView>
-       <ImageView pickOnBounds="true" preserveRatio="true">
+      </ImageView>               
+      
+      <ImageView pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@fruit5.jpg" />
+            <Image url="@images/fruit4.jpg" />
          </image>
-      </ImageView>
-       <ImageView pickOnBounds="true" preserveRatio="true">
+      </ImageView>      
+      
+      <ImageView pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@fruit1.jpg" />
+            <Image url="@images/fruit5.jpg" />
          </image>
-      </ImageView>
+      </ImageView>                    
    </children>
 </TilePane>

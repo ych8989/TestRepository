@@ -24,16 +24,17 @@ public class RootController implements Initializable {
 	private Button btnStart;
 	@FXML
 	private Button btnStop;
+	
 	private TimeService timeService;
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		btnStart.setOnAction(e -> handleBtnStart(e));
-		btnStop.setOnAction(e -> handleBtnStop(e));
-	}
+		btnStart.setOnAction(e->handleBtnStart(e));
+		btnStop.setOnAction(e->handleBtnStop(e));
+	}	
 
 	private void handleBtnStart(ActionEvent e) {
-		if (timeService == null) {
+		if(timeService == null) {
 			timeService = new TimeService();
 			timeService.start();
 		} else {
@@ -42,31 +43,23 @@ public class RootController implements Initializable {
 	}
 
 	private void handleBtnStop(ActionEvent e) {
-
+		timeService.cancel();
 	}
-
+	
 	class TimeService extends Service<Integer> {
-
 		@Override
 		protected Task<Integer> createTask() {
 			Task<Integer> task = new Task<Integer>() {
 				@Override
 				protected Integer call() throws Exception {
-
 					int sum = 0;
-					for (int i = 1; i <= 100; i++) {
-
+					for(int i=1; i<=100; i++) {
 						sum += i;
-						if (isCancelled()) {
-							break;
-						}
-						try {
-							Thread.sleep(100);
-						} catch (Exception e) {
-						}
+						if(isCancelled()) { break; }
+						try { Thread.sleep(100); } catch(Exception e) {}
 						int value = i;
-						Platform.runLater(() -> {
-							progressBar.setProgress(value / 100.0);
+						Platform.runLater(()->{
+							progressBar.setProgress(value/100.0);
 							lblWorkDone.setText(String.valueOf(value));
 						});
 					}
@@ -78,7 +71,8 @@ public class RootController implements Initializable {
 
 		@Override
 		protected void succeeded() {
-			lblResult.setText(getValue().toString());
+			lblResult.setText(String.valueOf(getValue()));
 		}
+		
 	}
 }

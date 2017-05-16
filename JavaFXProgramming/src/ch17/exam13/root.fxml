@@ -8,11 +8,8 @@
 
 <AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch17.exam13.RootController">
    <children>
-      <Button fx:id="btn1" layoutX="30.0" layoutY="53.0" mnemonicParsing="false" text="버튼1" />
-      <Button fx:id="btn2" layoutX="126.0" layoutY="53.0" mnemonicParsing="false" text="버튼2" />
-      <Button fx:id="btn3" layoutX="215.0" layoutY="53.0" mnemonicParsing="false" onAction="#btn3Handle" text="버튼3" />
-      <Button layoutX="30.0" layoutY="134.0" mnemonicParsing="false" text="버튼4" />
-      <Button layoutX="126.0" layoutY="134.0" mnemonicParsing="false" text="버튼5" />
-      <Button layoutX="215.0" layoutY="134.0" mnemonicParsing="false" text="버튼6" />
+      <Button fx:id="btn1" layoutX="46.0" layoutY="55.0" mnemonicParsing="false" text="버튼1"  />
+      <Button fx:id="btn2" layoutX="128.0" layoutY="55.0" mnemonicParsing="false" text="버튼2" />
+      <Button fx:id="btn3" layoutX="207.0" layoutY="55.0" mnemonicParsing="false" onAction="btn3Handle" text="버튼3" />
    </children>
 </AnchorPane>

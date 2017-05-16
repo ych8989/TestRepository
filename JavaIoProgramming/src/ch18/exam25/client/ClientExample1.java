@@ -5,24 +5,22 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 
 public class ClientExample1 {
-
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         Socket socket = null;
+        
         try {
+            //how1
+            //socket = new Socket("192.168.3.35", 50001);
+            
             //how
-            //socket = new Socket("192.168.3.37", 50001);
-            //how
-            socket=new Socket();
-            socket.connect(new InetSocketAddress("192.168.3.37", 50001));
+            socket = new Socket();
+            socket.connect(new InetSocketAddress("192.168.3.51", 50001));
         } catch (IOException ex) {
             ex.printStackTrace();
-
         }
-        if (!socket.isClosed()) {
-
-        } 
-       if(!socket.isClosed()){
-        try {socket.close();}catch(IOException ex){}
+        
+        if(!socket.isClosed()) {
+            try { socket.close(); } catch (IOException ex) {}
+        }
     }
-}
 }

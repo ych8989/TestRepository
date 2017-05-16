@@ -3,7 +3,6 @@ package com.mycompany.myapp.dto;
 import java.util.Date;
 
 public class Board {
-
 	private int bno;
 	private String btitle;
 	private String bcontent;
@@ -49,7 +48,4 @@ public class Board {
 	public void setBdate(Date bdate) {
 		this.bdate = bdate;
 	}
-	
-	
-
 }
