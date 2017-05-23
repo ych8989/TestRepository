@@ -20,9 +20,11 @@
 			<item value="SpringWebProgramming"/>
 		</list>
 		<list key="artifactId">
+			<item value="SpringWebProgramming5s"/>
 			<item value="SpringWebProgramming"/>
 		</list>
 		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
 			<item value="1.0"/>
 		</list>
 	</section>

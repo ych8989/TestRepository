@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+	<!-- 로그를 어디에 출력할 것인가를 설정 -->
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{HH:mm:ss}-%-5level %/c{2} %M() - %msg%n" />
+		</Console>
+	</Appenders>
+	<Loggers>
+	<Loder name="com.mycompany.myapp.contrlooer"level="INFON"
+		<Root level="ERROR">
+			<AppenderRef ref="Console" />
+		</Root>
+		<!-- 로깅 대상(클래스)을 설정 -->
+	</Loggers>
+</Configuration>

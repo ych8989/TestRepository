@@ -11,36 +11,37 @@ import com.pi4j.io.gpio.event.GpioPinListenerDigital;
 import java.io.IOException;
 
 public class Button {
-//Filed
 
-    private GpioPinDigitalInput gpioPinDigitalInput;
-//Constructor
+	// Field
+	private GpioPinDigitalInput gpioPinDigitalInput;
 
-    public Button(Pin buttonPinNo) {
-        GpioController gpioController = GpioFactory.getInstance();
-        gpioPinDigitalInput = gpioController.provisionDigitalInputPin(buttonPinNo);
-        gpioPinDigitalInput.setShutdownOptions(true);
-    }
+	// Constructor
+	public Button(Pin buttonPinNo) {
+		GpioController gpioController = GpioFactory.getInstance();
+		gpioPinDigitalInput = gpioController.provisionDigitalInputPin(buttonPinNo);
+		gpioPinDigitalInput.setShutdownOptions(true);
 
-    public void setGpioPinListenerDigital(GpioPinListenerDigital listener) {
-        gpioPinDigitalInput.addListener(listener);
-    }
+	}
 
-//Method
-    public static void main(String[] args) throws IOException {
-        Button button = new Button(RaspiPin.GPIO_00);
-        button.setGpioPinListenerDigital(new GpioPinListenerDigital() {
-            @Override
-            public void handleGpioPinDigitalStateChangeEvent(GpioPinDigitalStateChangeEvent event) {
-                if (event.getState() == PinState.HIGH) {
-                    System.out.println("High");
-                } else {
-                    System.out.println("Low");
-                }
-            }
-        });
-        System.out.println("Ready...");
-        System.in.read();
+	public void setGpioPinListenerDigital(GpioPinListenerDigital listener) {
+		gpioPinDigitalInput.addListener(listener);
 
-    }
+	}
+
+	// Method
+	public static void main(String[] args) throws IOException {
+		Button button = new Button(RaspiPin.GPIO_00);
+		button.setGpioPinListenerDigital(new GpioPinListenerDigital() {
+			@Override
+			public void handleGpioPinDigitalStateChangeEvent(GpioPinDigitalStateChangeEvent event) {
+				if (event.getState() == PinState.HIGH) {
+					System.out.println("High");
+				} else {
+					System.out.println("Low");
+				}
+			}
+		});
+		System.out.println("Ready....");
+		System.in.read();
+	}
 }

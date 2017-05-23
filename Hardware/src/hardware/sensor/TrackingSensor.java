@@ -10,37 +10,37 @@ import com.pi4j.io.gpio.event.GpioPinListenerDigital;
 import java.io.IOException;
 
 public class TrackingSensor {
-//filed
+// Field
 
-    private GpioPinDigitalInput trackingPin;
+	private GpioPinDigitalInput trackingPin;
 
-//constructor
-    public TrackingSensor(Pin trackingPinNo) {
-        GpioController gpioController = GpioFactory.getInstance();
-        trackingPin = gpioController.provisionDigitalInputPin(trackingPinNo);
-        trackingPin.setShutdownOptions(true, PinState.LOW);
-    }
+	// Constructor
+	public TrackingSensor(Pin trackingPinNo) {
+		GpioController gpioController = GpioFactory.getInstance();
+		trackingPin = gpioController.provisionDigitalInputPin(trackingPinNo);
+		trackingPin.setShutdownOptions(true, PinState.LOW);
 
-    public void setGpioPinListenerDigital(GpioPinListenerDigital gpioPinListenerDigital) {
-        trackingPin.addListener(gpioPinListenerDigital);
-    }
+	}
 
-    public PinState getStatus() {
-        return trackingPin.getState();
-    }
-//method    
+	public void setGpioPinListenerDigital(GpioPinListenerDigital gpioPinListenerDigital) {
+		trackingPin.addListener(gpioPinListenerDigital);
+	}
 
-    public static void main(String[] args) throws IOException {
-        TrackingSensor test = new TrackingSensor(RaspiPin.GPIO_00);
-        test.setGpioPinListenerDigital(event -> {
-            if (event.getState() == PinState.HIGH) {
-                System.out.println("Black");
-            } else {
-                System.out.println("White");
-            }
-        });
-        System.out.println("Ready...");
-        System.in.read();
-        
-    }
+	public PinState getStatus() {
+		return trackingPin.getState();
+	}
+
+	// Method
+	public static void main(String[] args) throws IOException {
+		TrackingSensor test = new TrackingSensor(RaspiPin.GPIO_00);
+		test.setGpioPinListenerDigital(event -> {
+			if (event.getState() == PinState.HIGH) {
+				System.out.println("black");
+			} else {
+				System.out.println("White");
+			}
+		});
+		System.out.println("Ready...");
+		System.in.read();
+	}
 }
