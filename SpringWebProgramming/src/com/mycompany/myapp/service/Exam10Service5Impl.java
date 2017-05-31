@@ -11,15 +11,13 @@ public class Exam10Service5Impl implements Exam10Service5 {
 
 	@Override
 	public void join() {
-		System.out.println("Exam10Service5Impl-join() 실행");
+		System.out.println("Exam10Service5Impl - join() 실행");
 		exam10Dao.insert();
-
 	}
 
+	@Override
 	public void login() {
-		System.out.println("Exam10Service5Impl-login() 실행");
+		System.out.println("Exam10Service5Impl - login() 실행");
 		exam10Dao.select();
-
 	}
-
 }

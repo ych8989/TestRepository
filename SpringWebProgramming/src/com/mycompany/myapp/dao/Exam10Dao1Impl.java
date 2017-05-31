@@ -6,10 +6,10 @@ import org.springframework.stereotype.Component;
 public class Exam10Dao1Impl implements Exam10Dao1 {
 
 	public void insert() {
-		System.out.println("Exam10Dao1Impl insert() 호출");
+		System.out.println("Exam10Dao1Impl - insert() 호출");
 	}
 
 	public void select() {
-		System.out.println("Exam10Dao1Impl select() 호출");
+		System.out.println("Exam10Dao1Impl - select() 호출");
 	}
 }

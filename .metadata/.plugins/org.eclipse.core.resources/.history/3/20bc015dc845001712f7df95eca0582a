@@ -1,0 +1,15 @@
+package com.mycompany.myapp.service;
+
+import java.util.List;
+
+import com.mycompany.myapp.dto.Exam12Board;
+import com.mycompany.myapp.dto.Exam12Member;
+
+public interface Exam12Service {
+	public void boardwrite(Exam12Board board);
+
+	public void memberJoin(Exam12Member member);
+
+	public List<Exam12Board> boardListAll();
+
+}

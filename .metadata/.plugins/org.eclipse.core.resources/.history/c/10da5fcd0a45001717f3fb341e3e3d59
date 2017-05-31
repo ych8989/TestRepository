@@ -1,0 +1,5 @@
+package com.mycompany.myapp.dto;
+
+public interface Exam12Member {
+
+}
