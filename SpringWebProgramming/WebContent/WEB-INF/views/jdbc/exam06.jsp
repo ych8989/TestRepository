@@ -16,45 +16,49 @@
 	</head>
 	
 	<body>
-	<h4>게시물 목록</h4>
+	<h4>회원정보 페이지 목록</h4>
 	<hr/>
+	
 	<table class="table table-bordered" style="width: 700px">
             <tr class="success">
-                <td>번호</td>
-                <td>제목</td>
-                <td>글쓴이</td>
+                <td>아이디</td>
+                <td>이름</td>
                 <td>날짜</td>
-                <td>조회수</td>
+                <td>전화번호</td>
+                <td>이메일</td>
+                <td>나이</td>
+                <td>주소</td>
             </tr>
-            <c:forEach var="b" items="${list}"> 
+            <c:forEach var="m" items="${list}"> 
                 <tr>
-                    <td>${b.bno}</td>
-                    <td>${b.btitle}</td>
-                    <td>${b.bwriter}</td>
-                    <td>${b.bdate}</td>
-                    <td>${b.bhitcount}</td>
+                    <td>${m.mid}</td>
+                    <td><a href="exam06Detail?mid=${m.mid}">${m.mname}</a></td>
+                    <td>${m.mdate}</td>
+                    <td>${m.mtel}</td>
+                    <td>${m.memail}</td>
+                    <td>${m.mage}</td>
+                    <td>${m.maddress}</td>
                 </tr>
             </c:forEach>
         </table>
+        
         <div style="margin-top: 20px; width:700px; text-align: center;">
-	        <a href="exam05?pageNo=1">[처음]</a>
+	        <a href="exam06?pageNo=1">[처음]</a>
 	        <c:if test="${groupNo>1}">
-	        <a href="exam05?pageNo=${startPageNo-1}">[이전]</a>
+	        <a href="exam06?pageNo=${startPageNo-1}">[이전]</a>
 	        </c:if>
 	        
 	        <c:forEach var="i" begin="${startPageNo}" end = "${endPageNo}">
 	        &nbsp;
-	        <a href="exam05?pageNo=${i}" <c:if test="${pageNo==i}"> style="font-weight:bold; color:red;" </c:if>>${i} </a>
+	        <a href="exam06?pageNo=${i}" <c:if test="${pageNo==i}"> style="font-weight:bold; color:red;" </c:if>>${i} </a>
 	        &nbsp;
 	        </c:forEach>
 	        
 	        <c:if test="${groupNo<totalGroupNo}">
-	        <a href="exam05?pageNo=${endPageNo+1}">[다음]</a>
+	        <a href="exam06?pageNo=${endPageNo+1}">[다음]</a>
 	        </c:if>
 	        
-	        <a href="exam05?pageNo=${totalPageNo}">[맨끝]</a>
-	        
-        
+	        <a href="exam06?pageNo=${totalPageNo}">[맨끝]</a>
         </div>
 	
 	</body>

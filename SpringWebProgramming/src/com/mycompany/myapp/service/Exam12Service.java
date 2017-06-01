@@ -11,8 +11,30 @@ public interface Exam12Service {
 	public List<Exam12Board> boardListAll();
 
 	public List<Exam12Board> boardListPage(int pageNo, int rowsPerPage);
+
 	public int boardTotalRows();
+
+	public Exam12Board getBoard(int bno);
+
+	public String boardCheckBpassword(int bno, String bpassword);
+
+	public void boardUpdate(Exam12Board board);
+
+	public List<Exam12Member> memberListPage(int pageNo, int rowsPerPage);
+
+	public int memberTotalRows();
 
 	public void memberJoin(Exam12Member member);
 
+	public void boardDelete(int bno);
+
+	public void memberDelete(String mid);
+
+	public void memberUpdate(Exam12Member member);
+
+	public String memberCheckMpassword(String mid, String mpassword);
+
+	public Exam12Member getMember(String mid);
+
+	public List<Exam12Member> memberListAll();
 }
