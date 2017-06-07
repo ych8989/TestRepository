@@ -1,0 +1,12 @@
+package com.mycompany.myapp.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class Exam13CookieAndSessionController {
+	@RequestMapping("/cookie/exam01")
+	public String exam01() {
+		return "redirect:/";
+	}
+}
