@@ -22,6 +22,7 @@ public interface Exam12Dao {
 	public void boardUpdate(Exam12Board board);
 
 	public void boardDelete(int bno);
+
 	///////////////////////////////////////////////////////////////////////////////////
 
 	public String memberInsert(Exam12Member member);
@@ -30,9 +31,10 @@ public interface Exam12Dao {
 
 	public int memberCountAll();
 
-	public Exam12Member memberSelectBymid(String mid);
+	public Exam12Member memberSelectByMid(String mid);
 
 	public void memberUpdate(Exam12Member member);
 
 	public void memberDelete(String mid);
+
 }

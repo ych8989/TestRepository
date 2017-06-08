@@ -58,13 +58,11 @@ public class Exam12ServiceImpl implements Exam12Service {
 	@Override
 	public void boardUpdate(Exam12Board board) {
 		dao.boardUpdate(board);
-
 	}
 
 	@Override
 	public void boardDelete(int bno) {
 		dao.boardDelete(bno);
-
 	}
 
 	////////////////////////////////////////////////////////////////////////
@@ -86,9 +84,19 @@ public class Exam12ServiceImpl implements Exam12Service {
 	}
 
 	@Override
-	public void memberDelete(String mid) {
-		dao.memberDelete(mid);
+	public Exam12Member getMember(String mid) {
+		Exam12Member member = dao.memberSelectByMid(mid);
+		return member;
+	}
 
+	@Override
+	public String memberCheckMpassword(String mid, String mpassword) {
+		String result = "fail";
+		Exam12Member member = dao.memberSelectByMid(mid);
+		if (member.getMpassword().equals(mpassword)) {
+			result = "success";
+		}
+		return result;
 	}
 
 	@Override
@@ -98,25 +106,9 @@ public class Exam12ServiceImpl implements Exam12Service {
 	}
 
 	@Override
-	public Exam12Member getMember(String mid) {
-		Exam12Member member = dao.memberSelectBymid(mid);
-		return member;
-	}
+	public void memberDelete(String mid) {
+		dao.memberDelete(mid);
 
-	@Override
-	public String memberCheckMpassword(String mid, String mpassword) {
-		String result = "fail";
-		Exam12Member member = dao.memberSelectBymid(mid);
-		if (member.getMpassword().equals(mpassword)) {
-			result = "success";
-		}
-		return result;
-	}
-
-	@Override
-	public List<Exam12Member> memberListAll() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

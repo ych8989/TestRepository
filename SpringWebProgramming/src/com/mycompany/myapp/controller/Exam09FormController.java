@@ -81,11 +81,11 @@ public class Exam09FormController {
 			encodingFileName = new String(fileName.getBytes("UTF-8"), "ISO-8859-1");
 		}
 
-		response.addHeader("Content-Disposition", "attachment; filename=\"" + encodingFileName + "\""); //attachment - >파일로저장하는행위를 취해야한다.(다이얼로그를 띄워야한다.)
+		response.addHeader("Content-Disposition", "attachment; filename=\"" + encodingFileName + "\""); //attachment -> 파일로저장하는행위를 취해야한다.(다이얼로그를 띄워야한다.)
 		//2)파일종류(필수)
 		response.addHeader("Content-Type", "image/jpeg");
 		//3)파일사이즈(옵션)
-		File file = new File(servletContext.getRealPath("/WEB-INF/upload/사막.jpg"));
+		File file = new File(servletContext.getRealPath("/WEB-INF/upload/" + fileName));
 		long fileSize = file.length();
 		response.addHeader("Content-Length", String.valueOf(fileSize));
 

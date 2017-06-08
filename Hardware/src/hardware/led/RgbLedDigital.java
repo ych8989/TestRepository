@@ -70,16 +70,17 @@ public class RgbLedDigital {
 	}
 
 	public static void main(String[] args) throws InterruptedException {
-		RgbLedDigital test = new RgbLedDigital(RaspiPin.GPIO_00, RaspiPin.GPIO_02, RaspiPin.GPIO_03);
-		while (true) {
-			test.rgb(true, false, false);
-			Thread.sleep(50);
-			test.rgb(false, true, false);
-			Thread.sleep(50);
-			test.rgb(false, false, true);
-			Thread.sleep(50);
-
-		}
+		RgbLedDigital test = new RgbLedDigital(RaspiPin.GPIO_04, RaspiPin.GPIO_05, RaspiPin.GPIO_06);
+//		while (true) {
+//			test.rgb(true, false, false);
+//			Thread.sleep(50);
+//			test.rgb(false, true, false);
+//			Thread.sleep(50);
+//			test.rgb(false, false, true);
+//			Thread.sleep(50);
+//
+//		}
+    test.rgb(false, false, false);
 	}
 
 }

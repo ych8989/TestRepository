@@ -4,9 +4,7 @@ import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinPwmOutput;
 import com.pi4j.io.gpio.Pin;
-import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.RaspiPin;
-import java.io.IOException;
 
 public class RgbLedPWM {
 
@@ -65,7 +63,7 @@ public class RgbLedPWM {
 	}
 
 	public static void main(String[] args) throws Exception {
-		RgbLedPWM test = new RgbLedPWM(RaspiPin.GPIO_00, RaspiPin.GPIO_02, RaspiPin.GPIO_03);
+		RgbLedPWM test = new RgbLedPWM(RaspiPin.GPIO_04, RaspiPin.GPIO_05, RaspiPin.GPIO_06);
 
 		test.ledColorSet(255, 0, 0);
 		Thread.sleep(1000);

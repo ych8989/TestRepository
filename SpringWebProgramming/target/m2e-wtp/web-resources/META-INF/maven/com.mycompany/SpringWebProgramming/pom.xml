@@ -87,6 +87,18 @@
 			<version>11.2.0.4.0-atlassian-hosted</version>
 		</dependency>
 
+		<!-- Connection Pool -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>4.3.8.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>c3p0</groupId>
+			<artifactId>c3p0</artifactId>
+			<version>0.9.1.2</version>
+		</dependency>
+
 	</dependencies>
 
 	<!-- 중앙 저장소가 아닌 다른 저장소를 사용하기 위해 artifact 등록 -->

@@ -44,9 +44,9 @@ public class FlameSensor {
 			@Override
 			public void handleGpioPinDigitalStateChangeEvent(GpioPinDigitalStateChangeEvent event) {
 				if (event.getState() == PinState.LOW) {
-					System.out.println("!!화재상태!!");
+					System.out.println("!!화재 발생!!");
 				} else {
-					System.out.println("-정상상태-");
+					System.out.println("-정상 상태-");
 				}
 			}
 		});

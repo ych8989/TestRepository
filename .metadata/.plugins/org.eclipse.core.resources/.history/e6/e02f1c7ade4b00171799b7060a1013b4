@@ -1,0 +1,388 @@
+package com.mycompany.myapp.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
+
+import com.mycompany.myapp.dto.Exam12Board;
+import com.mycompany.myapp.dto.Exam12Member;
+import com.mycompany.myapp.dto.UsedMarketBoard;
+
+@Component
+public class UsedMarketDaoImpl implements UsedMarketDao {
+	private static final Logger LOGGER = LoggerFactory.getLogger(Exam12DaoImpl.class);
+
+	@Override
+	public int boardInsert(UsedMarketBoard board) {
+		int bno = -1;
+		Connection conn = null;
+		try {
+			// JDBC Driver 클래스 로딩
+			Class.forName("oracle.jdbc.OracleDriver");
+
+			// 연결 문자열 작성
+			String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+
+			// 연결 객체 얻기
+			conn = DriverManager.getConnection(url, "iotuser", "iot12345");
+			LOGGER.info("연결 성공");
+
+			// SQL 작성
+			String sql = "insert into board ";
+			sql += "(bno, btitle, bcontent, bwriter, bdate, bpassword, bhitcount, boriginalfilename, bsavedfilename, bfilecontent, bprice) ";
+			sql += "values ";
+			sql += "(board_bno_seq.nextval, ?, ?, ?, sysdate, ?, 0, ?, ?, ?, ?)";
+
+			// SQL 문을 전송해서 실행
+			// 테이블 정의시 컬럼의 속성으로 자동 증가를 지정할 수 있는 DB일 경우(MySQL, MS SQL)
+			// PreparedStatement pstmt = conn.prepareStatement(sql,
+			// Statement.RETURN_GENERATED_KEYS);
+			// 오라클일 경우 Sequence 외부 객체로 자동 증가값을 얻기 때문에 다음과 같이 지정
+			PreparedStatement pstmt = conn.prepareStatement(sql, new String[] { "bno" });
+			pstmt.setString(1, board.getBtitle());
+			pstmt.setString(2, board.getBcontent());
+			pstmt.setString(3, board.getBwriter());
+			pstmt.setString(4, board.getBpassword());
+			pstmt.setString(5, board.getBoriginalfilename());
+			pstmt.setString(6, board.getBsavedfilename());
+			pstmt.setString(7, board.getBfilecontent());
+			pstmt.setString(8, board.getBprice());
+			pstmt.executeUpdate();
+			ResultSet rs = pstmt.getGeneratedKeys();
+			rs.next();
+			bno = rs.getInt(1);
+
+			pstmt.close();
+
+			LOGGER.info("행 추가 성공");
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// 연결 끊기
+			try {
+				conn.close();
+				LOGGER.info("연결 끊김");
+			} catch (SQLException e) {
+			}
+		}
+		return bno;
+	}
+
+	@Override
+	public List<UsedMarketBoard> boardSelectPage(int pageNo, int rowsPerPage) {
+		List<UsedMarketBoard> list = new ArrayList<>();
+		Connection conn = null;
+		try {
+			// JDBC Driver 클래스 로딩
+			Class.forName("oracle.jdbc.OracleDriver");
+
+			// 연결 문자열 작성
+			String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+
+			// 연결 객체 얻기
+			conn = DriverManager.getConnection(url, "iotuser", "iot12345");
+			LOGGER.info("연결 성공");
+
+			// SQL 작성
+			String sql = "select * ";
+			sql += "from ( ";
+			sql += "  select rownum as r, bno, btitle, bwriter, bdate, bhitcount, bprice ";
+			sql += "  from ( ";
+			sql += "    select bno, btitle, bwriter, bdate, bhitcount, bprice from board order by bno desc ";
+			sql += "  ) ";
+			sql += "  where rownum <=? ";
+			sql += ") ";
+			sql += "where r>=? ";
+
+			// SQL 문을 전송해서 실행
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, pageNo * rowsPerPage);
+			pstmt.setInt(2, (pageNo - 1) * rowsPerPage + 1);
+			ResultSet rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				UsedMarketBoard board = new UsedMarketBoard();
+				board.setBno(rs.getInt("bno"));
+				board.setBtitle(rs.getString("btitle"));
+				board.setBwriter(rs.getString(4));
+				board.setBdate(rs.getDate("bdate"));
+				board.setBhitcount(rs.getInt("bhitcount"));
+				board.setBprice(rs.getString("bprice"));
+				list.add(board);
+			}
+			rs.close();
+			pstmt.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			LOGGER.info("ClassNotFoundException");
+		} catch (SQLException e) {
+			LOGGER.info("SQLException");
+			e.printStackTrace();
+		} finally {
+			// 연결 끊기
+			try {
+				conn.close();
+				LOGGER.info("연결 끊김");
+			} catch (SQLException e) {
+			}
+		}
+		return list;
+	}
+
+	@Override
+	public int boardCountAll() {
+		int count = 0;
+		Connection conn = null;
+		try {
+			// JDBC Driver 클래스 로딩
+			Class.forName("oracle.jdbc.OracleDriver");
+
+			// 연결 문자열 작성
+			String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+
+			// 연결 객체 얻기
+			conn = DriverManager.getConnection(url, "iotuser", "iot12345");
+			LOGGER.info("연결 성공");
+
+			// SQL 작성
+			String sql = "select count(*) from board";
+
+			// SQL 문을 전송해서 실행
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			rs.next();
+			count = rs.getInt(1);
+			rs.close();
+			pstmt.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// 연결 끊기
+			try {
+				conn.close();
+				LOGGER.info("연결 끊김");
+			} catch (SQLException e) {
+			}
+		}
+		return count;
+	}
+
+	@Override
+	public UsedMarketBoard boardSelectByBno(int bno) {
+		UsedMarketBoard board = null;
+		Connection conn = null;
+		try {
+			// JDBC Driver 클래스 로딩
+			Class.forName("oracle.jdbc.OracleDriver");
+
+			// 연결 문자열 작성
+			String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+
+			// 연결 객체 얻기
+			conn = DriverManager.getConnection(url, "iotuser", "iot12345");
+			LOGGER.info("연결 성공");
+
+			// SQL 작성
+			String sql = "select * from board where bno=?";
+
+			// SQL 문을 전송해서 실행
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bno);
+			ResultSet rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				board = new UsedMarketBoard();
+				board.setBno(rs.getInt("bno"));
+				board.setBtitle(rs.getString("btitle"));
+				board.setBcontent(rs.getString("bcontent"));
+				board.setBwriter(rs.getString("bwriter"));
+				board.setBdate(rs.getDate("bdate"));
+				board.setBpassword(rs.getString("bpassword"));
+				board.setBhitcount(rs.getInt("bhitcount"));
+				board.setBoriginalfilename(rs.getString("boriginalfilename"));
+				board.setBsavedfilename(rs.getString("bsavedfilename"));
+				board.setBfilecontent(rs.getString("bfilecontent"));
+				board.setBprice(rs.getString("bprice"));
+			}
+			rs.close();
+			pstmt.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// 연결 끊기
+			try {
+				conn.close();
+				LOGGER.info("연결 끊김");
+			} catch (SQLException e) {
+			}
+		}
+		return board;
+	}
+
+	@Override
+	public void boardUpdateBhitcount(int bno, int bhitcount) {
+		Connection conn = null;
+		try {
+			// JDBC Driver 클래스 로딩
+			Class.forName("oracle.jdbc.OracleDriver");
+
+			// 연결 문자열 작성
+			String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+
+			// 연결 객체 얻기
+			conn = DriverManager.getConnection(url, "iotuser", "iot12345");
+			LOGGER.info("연결 성공");
+
+			// SQL 작성
+			String sql = "update board set bhitcount=? where bno=?";
+
+			// SQL 문을 전송해서 실행
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bhitcount);
+			pstmt.setInt(2, bno);
+			pstmt.executeUpdate();
+			pstmt.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// 연결 끊기
+			try {
+				conn.close();
+				LOGGER.info("연결 끊김");
+			} catch (SQLException e) {
+			}
+		}
+	}
+
+	@Override
+	public void boardUpdate(UsedMarketBoard board) {
+		Connection conn = null;
+		try {
+			// JDBC Driver 클래스 로딩
+			Class.forName("oracle.jdbc.OracleDriver");
+
+			// 연결 문자열 작성
+			String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+
+			// 연결 객체 얻기
+			conn = DriverManager.getConnection(url, "iotuser", "iot12345");
+
+			// SQL 작성
+			String sql;
+			if (board.getBoriginalfilename() != null) {
+				sql = "update board set btitle=?, bcontent=?, bpassword=?, bdate=sysdate, bprice=?, boriginalfilename=?, bsavedfilename=?, bfilecontent=? where bno=?";
+			} else {
+				sql = "update board set btitle=?, bcontent=?, bpassword=?, bdate=sysdate, bprice=? where bno=?";
+
+			}
+
+			// SQL 문을 전송해서 실행
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, board.getBtitle());
+			pstmt.setString(2, board.getBcontent());
+			pstmt.setString(3, board.getBpassword());
+			pstmt.setString(4, board.getBprice());
+			if (board.getBoriginalfilename() != null) {
+				pstmt.setString(5, board.getBoriginalfilename());
+				pstmt.setString(6, board.getBsavedfilename());
+				pstmt.setString(7, board.getBfilecontent());
+				pstmt.setInt(8, board.getBno());
+			} else {
+				pstmt.setInt(5, board.getBno());
+			}
+			pstmt.executeUpdate();
+			pstmt.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// 연결 끊기
+			try {
+				conn.close();
+				LOGGER.info("연결 끊김");
+			} catch (SQLException e) {
+			}
+		}
+	}
+
+	@Override
+	public void boardDelete(int bno) {
+		Connection conn = null;
+		try {
+			// JDBC Driver 클래스 로딩
+			Class.forName("oracle.jdbc.OracleDriver");
+
+			// 연결 문자열 작성
+			String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+
+			// 연결 객체 얻기
+			conn = DriverManager.getConnection(url, "iotuser", "iot12345");
+
+			// SQL 작성
+			String sql = "delete from board where bno=?";
+
+			// SQL 문을 전송해서 실행
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bno);
+			pstmt.executeUpdate();
+			pstmt.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// 연결 끊기
+			try {
+				conn.close();
+				LOGGER.info("연결 끊김");
+			} catch (SQLException e) {
+			}
+		}
+
+	}
+	
+	public static void main(String[] args) {
+		UsedMarketDaoImpl test = new UsedMarketDaoImpl();
+		// List<Exam12Board> list = test.boardSelectPage(2, 10);
+		// for (Exam12Board board : list) {
+		// LOGGER.info(board.getBtitle());
+		// }
+		UsedMarketBoard board = new UsedMarketBoard();
+		for (int i = 1; i <= 30; i++) {
+			board.setBno(i);
+			board.setBtitle("이름" + i);
+			board.setBcontent("컴퓨터 팔아요, 많이 팔아요");
+			board.setBwriter("장성근");
+			board.setBdate(new Date());
+			board.setBpassword("12345");
+			board.setBhitcount(0);
+			board.setBoriginalfilename("사막.png");
+			board.setBsavedfilename("1496751934577-사막.jpg");
+			board.setBfilecontent("image/png");
+
+			test.boardInsert(board);
+
+		}
+		
+	}
+
+}
