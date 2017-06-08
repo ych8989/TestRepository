@@ -24,7 +24,6 @@ public class SG90ServoButtonTest {
 				}
 			}
 		});
-
 		btn2.setGpioPinListenerDigital(new GpioPinListenerDigital() {
 			@Override
 			public void handleGpioPinDigitalStateChangeEvent(GpioPinDigitalStateChangeEvent event) {
@@ -42,7 +41,6 @@ public class SG90ServoButtonTest {
 				}
 			}
 		});
-
 		System.out.println("Ready");
 		System.in.read();
 	}

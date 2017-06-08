@@ -351,3 +351,10 @@
 192.168.3.124 - - [08/Jun/2017:15:31:40 +0900] "GET /yoo/queList HTTP/1.1" 200 3024
 192.168.3.124 - - [08/Jun/2017:15:31:45 +0900] "GET /yoo/queList?pageNo=2 HTTP/1.1" 200 2416
 192.168.3.124 - - [08/Jun/2017:15:31:48 +0900] "GET /yoo/queList?pageNo=1 HTTP/1.1" 200 3024
+127.0.0.1 - - [08/Jun/2017:16:19:28 +0900] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [08/Jun/2017:16:19:30 +0900] "GET /pi/ HTTP/1.1" 200 551
+0:0:0:0:0:0:0:1 - - [08/Jun/2017:16:19:30 +0900] "GET /pi/resources/jquery/jquery-3.2.1.min.js HTTP/1.1" 404 992
+0:0:0:0:0:0:0:1 - - [08/Jun/2017:16:19:30 +0900] "GET /pi/resources/bootstrap-3.3.7/css/bootstrap.min.css HTTP/1.1" 404 992
+0:0:0:0:0:0:0:1 - - [08/Jun/2017:16:19:30 +0900] "GET /pi/resources/bootstrap-3.3.7/js/bootstrap.min.js HTTP/1.1" 404 992
+0:0:0:0:0:0:0:1 - - [08/Jun/2017:16:19:30 +0900] "GET /pi/resources/bootstrap-3.3.7/js/bootstrap.min.js HTTP/1.1" 404 992
+0:0:0:0:0:0:0:1 - - [08/Jun/2017:16:19:30 +0900] "GET /favicon.ico HTTP/1.1" 404 1016
