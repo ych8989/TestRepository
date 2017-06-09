@@ -2,7 +2,8 @@ package com.mycompany.myapp.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Component;
 
 import com.mycompany.myapp.dao.Exam12Dao;
@@ -11,7 +12,7 @@ import com.mycompany.myapp.dto.Exam12Member;
 
 @Component
 public class Exam12ServiceImpl implements Exam12Service {
-	@Autowired
+	@Resource(name="exam12DaoImpl")
 	private Exam12Dao dao;
 
 	@Override
