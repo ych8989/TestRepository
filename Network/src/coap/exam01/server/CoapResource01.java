@@ -16,6 +16,7 @@ public class CoapResource01 extends CoapResource {
         PCF8591 pcf8591 = new PCF8591(0x48, PCF8591.AIN1);
         thermistorSensor = new ThermistorSensor(pcf8591);
     }
+
     //Method
     @Override
     public void handleGET(CoapExchange exchange) {

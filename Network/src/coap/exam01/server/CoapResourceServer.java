@@ -1,6 +1,9 @@
 package coap.exam01.server;
 
+import java.io.IOException;
+import java.net.InetSocketAddress;
 import org.eclipse.californium.core.CoapServer;
+import org.eclipse.californium.core.network.CoapEndpoint;
 
 public class CoapResourceServer {
 
@@ -10,6 +13,8 @@ public class CoapResourceServer {
     //Constructor
     public CoapResourceServer() {
         coapServer = new CoapServer();
+        InetSocketAddress isa=new InetSocketAddress("192.168.3.26",5683);
+        coapServer.addEndpoint(new CoapEndpoint(isa));
         coapServer.add(new CoapResource01());
         coapServer.start();
     }
@@ -18,11 +23,13 @@ public class CoapResourceServer {
     public void shutdown() {
         coapServer.stop();
         coapServer.destroy();
-        
+
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         CoapResourceServer server = new CoapResourceServer();
         System.out.print("CoAP Server is listening on port 5683");
+        System.in.read();
+        server.shutdown();
     }
 }

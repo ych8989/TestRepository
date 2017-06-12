@@ -64,7 +64,6 @@ public class Exam12DaoImpl2 implements Exam12Dao {
 		jdbcTemplate.update(psc, keyHolder);
 		int bno = keyHolder.getKey().intValue();
 		LOGGER.info(String.valueOf(bno));
-
 		return bno;
 	}
 
