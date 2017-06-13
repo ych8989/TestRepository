@@ -24,7 +24,7 @@
 		memail, mage, maddress
 		from ( select mid, mname, mdate, mtel, memail,
 		mage, maddress from
-		member order by mid desc )
+		member order by mid asc )
 		where rownum
 		&lt;=#{endNum})
 		where r &gt;=#{startNum}
@@ -37,12 +37,12 @@
 		select * from member where mid=#{mid}
 	</select>
 	<update id="update" parameterType="com.mycompany.myapp.dto.Exam12Member">
-		<if test="boriginalfilename!=null">
+		<if test="moriginalfilename!=null">
 			update member set mname=#{mname}, mpassword=#{mpassword}, mdate=sysdate,
 			mtel=#{mtel}, memail=#{memail}, mage=#{mage}, maddress=#{maddress}, moriginalfilename=#{moriginalfilename},
 			msavedfilename=#{msavedfilename}, mfilecontent=#{mfilecontent} where mid=#{mid}
 		</if>
-		<if test="boriginalfilename==null">
+		<if test="moriginalfilename==null">
 			update member set mname=#{mname}, mpassword=#{mpassword}, mdate=sysdate,
 			mtel=#{mtel}, memail=#{memail}, mage=#{mage}, maddress=#{maddress} where mid=#{mid}
 		</if>

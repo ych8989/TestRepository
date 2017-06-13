@@ -21,12 +21,10 @@ public class CoapResourceServer {
 
         coapServer.start();
     }
-
     //Method
     public void shutdown() {
         coapServer.stop();
         coapServer.destroy();
-
     }
 
     public static void main(String[] args) throws Exception {

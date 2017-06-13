@@ -7,16 +7,12 @@ import org.eclipse.californium.core.coap.MediaTypeRegistry;
 import org.json.JSONObject;
 
 public class CoapResource02Client {
-
     //Field
     private CoapClient coapClient;
-
     //Constructor
     public CoapResource02Client() {
         coapClient = new CoapClient();
-
     }
-
     //Method
     public String get(int angle) {
         String queryString = "kind=ultrasonicsensor&angle=" + angle;
@@ -32,7 +28,6 @@ public class CoapResource02Client {
             }
         }
     }
-
     public String post(int angle) {
         JSONObject jsonObject=new JSONObject();
         jsonObject.put("kind","ultrasonicsensor");
@@ -51,11 +46,9 @@ public class CoapResource02Client {
             }
         }
     }
-
     public void shutdown() {
         coapClient.shutdown();
     }
-
     public static void main(String[] args) {
         CoapResource02Client client = new CoapResource02Client();
         for (int i = 1; i <= 180; i += 10) {

@@ -32,7 +32,6 @@ public class Exam12DaoImpl3 implements Exam12Dao {
 		int bno = board.getBno();
 		return bno;
 	}
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	@Override
 	public List<Exam12Board> boardSelectAll() {
@@ -47,14 +46,12 @@ public class Exam12DaoImpl3 implements Exam12Dao {
 		map.put("startNum", (pageNo - 1) * rowsPerPage + 1);
 		map.put("endNum", pageNo * rowsPerPage);
 		List<Exam12Board> list = sqlSessionTemplate.selectList("board.selectByPage", map);
-
 		return list;
 	}
 
 	@Override
 	public int boardCountAll() {
 		int count = sqlSessionTemplate.selectOne("board.countAll");
-
 		return count;
 	}
 
@@ -74,19 +71,17 @@ public class Exam12DaoImpl3 implements Exam12Dao {
 
 	@Override
 	public void boardUpdate(Exam12Board board) {
-
 		sqlSessionTemplate.update("board.update", board);
 
 	}
 
 	@Override
 	public void boardDelete(int bno) {
-
 		sqlSessionTemplate.delete("board.delete", bno);
 
 	}
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	@Override
 	public String memberInsert(Exam12Member member) {
 		sqlSessionTemplate.insert("member.insert", member);
@@ -99,7 +94,6 @@ public class Exam12DaoImpl3 implements Exam12Dao {
 		map.put("startNum", (pageNo - 1) * rowsPerPage + 1);
 		map.put("endNum", pageNo * rowsPerPage);
 		List<Exam12Member> list = sqlSessionTemplate.selectList("member.selectByPage", map);
-
 		return list;
 	}
 

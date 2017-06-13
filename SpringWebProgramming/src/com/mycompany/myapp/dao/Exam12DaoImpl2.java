@@ -86,10 +86,8 @@ public class Exam12DaoImpl2 implements Exam12Dao {
 				return board;
 			}
 		};
-
 		List<Exam12Board> list = jdbcTemplate.query(sql, rowMapper);
 		return list;
-
 	}
 
 	@Override
@@ -103,7 +101,6 @@ public class Exam12DaoImpl2 implements Exam12Dao {
 		sql += "  where rownum <=? ";
 		sql += ") ";
 		sql += "where r>=? ";
-
 		Object[] args = { (pageNo * rowsPerPage), ((pageNo - 1) * rowsPerPage + 1) };
 		RowMapper<Exam12Board> rowMapper = new RowMapper<Exam12Board>() {
 			@Override
@@ -130,18 +127,14 @@ public class Exam12DaoImpl2 implements Exam12Dao {
 
 	@Override
 	public void boardUpdateBhitcount(int bno, int bhitcount) {
-
 		String sql = "update board set bhitcount=? where bno=?";
 		jdbcTemplate.update(sql, bhitcount, bno);
 	}
 
 	@Override
 	public Exam12Board boardSelectByBno(int bno) {
-
 		String sql = "select * from board where bno=?";
-
 		RowMapper<Exam12Board> rowMapper = new RowMapper<Exam12Board>() {
-
 			@Override
 			public Exam12Board mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Exam12Board board = new Exam12Board();
@@ -159,13 +152,11 @@ public class Exam12DaoImpl2 implements Exam12Dao {
 			}
 		};
 		Exam12Board board = jdbcTemplate.queryForObject(sql, rowMapper, bno);
-
 		return board;
 	}
 
 	@Override
 	public void boardUpdate(Exam12Board board) {
-
 		String sql;
 		if (board.getBoriginalfilename() != null) {
 			sql = "update board set btitle=?, bcontent=?, bpassword=?, bdate=sysdate, boriginalfilename=?, bsavedfilename=?, bfilecontent=? where bno=?";
@@ -175,16 +166,12 @@ public class Exam12DaoImpl2 implements Exam12Dao {
 			sql = "update board set btitle=?, bcontent=?, bpassword=?, bdate=sysdate where bno=?";
 			jdbcTemplate.update(sql, board.getBtitle(), board.getBcontent(), board.getBpassword(), board.getBno());
 		}
-
 	}
 
 	@Override
 	public void boardDelete(int bno) {
-
 		String sql = "delete from board where bno=?";
-
 		jdbcTemplate.update(sql, bno);
-
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -205,7 +192,6 @@ public class Exam12DaoImpl2 implements Exam12Dao {
 
 	@Override
 	public List<Exam12Member> memberSelectPage(int pageNo, int rowsPerPage) {
-
 		String sql = "select * ";
 		sql += "from ( ";
 		sql += "  select rownum as r, mid, mname, mdate, mtel, memail, mage, maddress ";
@@ -215,7 +201,6 @@ public class Exam12DaoImpl2 implements Exam12Dao {
 		sql += "  where rownum <=? ";
 		sql += ") ";
 		sql += "where r>=? ";
-
 		Object[] args = { (pageNo * rowsPerPage), ((pageNo - 1) * rowsPerPage + 1) };
 		RowMapper<Exam12Member> rowMapper = new RowMapper<Exam12Member>() {
 			@Override
@@ -286,7 +271,6 @@ public class Exam12DaoImpl2 implements Exam12Dao {
 		}
 
 	}
-
 	@Override
 	public void memberDelete(String mid) {
 
