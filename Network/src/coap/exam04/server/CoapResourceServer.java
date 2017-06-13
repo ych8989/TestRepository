@@ -23,6 +23,7 @@ public class CoapResourceServer {
         coapServer.add(new CoapResource04());
         coapServer.add(new CoapResource05());
         coapServer.add(new CoapResource06());
+        coapServer.add(new CoapResource07());
 
         coapServer.start();
     }
