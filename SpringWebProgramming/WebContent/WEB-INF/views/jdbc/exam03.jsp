@@ -19,49 +19,49 @@
                 <div class="input-group">
                     <span class="input-group-addon"> <span
                             class="glyphicon glyphicon-user"></span>
-                    </span> <input type="text" class="form-control" placeholder="아이디" name="mid" />
+                    </span> <input type="text" class="form-control" placeholder="아이디" name="mid"  value="hong"/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon"> <span
                             class="glyphicon glyphicon-tag"></span>
-                    </span> <input type="text" class="form-control" placeholder="이름" name="mname" />
+                    </span> <input type="text" class="form-control" placeholder="이름" name="mname" value="홍길동"/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon"> <span
                             class="glyphicon glyphicon-lock"></span>
-                    </span> <input type="password" class="form-control" placeholder="비밀번호" name="mpassword" />
+                    </span> <input type="password" class="form-control" placeholder="비밀번호" name="mpassword" value="12345"/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon"> <span
                             class="glyphicon glyphicon-tag"></span>
-                    </span> <input type="text" class="form-control" placeholder="전화번호" name="mtel" />
+                    </span> <input type="text" class="form-control" placeholder="전화번호" name="mtel" value="010-123-1234"/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon"> <span
                             class="glyphicon glyphicon-tag"></span>
-                    </span> <input type="text" class="form-control" placeholder="이메일" name="memail" />
+                    </span> <input type="text" class="form-control" placeholder="이메일" name="memail" value="hong@naver.com"/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon"> <span
                             class="glyphicon glyphicon-tag"></span>
-                    </span> <input type="text" class="form-control" placeholder="나이" name="mage" />
+                    </span> <input type="text" class="form-control" placeholder="나이" name="mage" value="25"/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon"> <span
                             class="glyphicon glyphicon-tag"></span>
-                    </span> <input type="text" class="form-control" placeholder="주소" name="maddress" />
+                    </span> <input type="text" class="form-control" placeholder="주소" name="maddress" value="서울시 송파구 가락동 IT 벤처타워 서관 12층"/>
                 </div>
             </div>
           
@@ -70,7 +70,7 @@
                 <div class="input-group">
                     <span class="input-group-addon"> <span
                             class="glyphicon glyphicon-camera"></span>
-                    </span> <input type="file" class="form-control" placeholder="선택" name="attach" />
+                    </span> <input type="file" class="form-control" placeholder="선택" name="mattach" />
                 </div>
             </div>
             <input type="submit" class="btn btn-info" value="가입" />
