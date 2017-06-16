@@ -7,8 +7,6 @@ import com.pi4j.io.gpio.GpioPinDigitalOutput;
 import com.pi4j.io.gpio.Pin;
 import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.RaspiPin;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class UltrasonicSensor {
 

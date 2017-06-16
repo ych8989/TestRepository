@@ -21,7 +21,7 @@ public class CoapResource06Client {
 
     //method
     public void observe() {
-        coapClient.setURI("coap://192.168.3.26/resource06");
+        coapClient.setURI("coap://192.168.3.26/resource07");
         coapObserveRelation = coapClient.observe(new CoapHandler() {
             @Override            
             public void onLoad(CoapResponse response) { //응답이 오면 실행 (handleGET.respond)
