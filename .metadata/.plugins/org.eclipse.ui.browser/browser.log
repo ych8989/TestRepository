@@ -1,6 +1,0 @@
-
-5월 23, 2017 13:44:22.94 NEW SESSION
-5월 23, 2017 13:44:22.94 [1452:5580:0523/134422.930:ERROR:gcm_channel_status_request.cc(127)] GCM channel request failed.
-
-6월 07, 2017 12:44:33.59 NEW SESSION
-6월 07, 2017 12:44:33.59 [6156:808:0607/124433.593:ERROR:CONSOLE(283)] "IndexedDBAgent error: Could not obtain database names.", source: chrome-devtools://devtools/bundled/resources/resources_module.js (283)
