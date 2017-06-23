@@ -4,6 +4,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import javafx.application.Application;
 import javafx.embed.swing.SwingNode;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;

@@ -12,14 +12,14 @@ import org.eclipse.californium.proxy.resources.ForwardingResource;
 import org.eclipse.californium.proxy.resources.ProxyCoapClientResource;
 
 public class CoapResourceServer {
-
     //Field
+
     private CoapServer coapServer;
 
     //Constructor
     public CoapResourceServer() throws Exception {
         coapServer = new CoapServer();
-        InetSocketAddress isa1 = new InetSocketAddress("192.168.3.26", 5683);
+        InetSocketAddress isa1 = new InetSocketAddress("192.168.3.9", 5683);
         InetSocketAddress isa2 = new InetSocketAddress("localhost", 5683);
         coapServer.addEndpoint(new CoapEndpoint(isa1));
         coapServer.addEndpoint(new CoapEndpoint(isa2));
@@ -28,18 +28,15 @@ public class CoapResourceServer {
         coapServer.add(new CoapResource02());
         coapServer.add(new CoapResource03());
         coapServer.add(new CoapResource04());
-        coapServer.add(new CoapResource05());
-        coapServer.add(new CoapResource06());
 
-        //coap->coap프록시 설정
+        //coap -> coap 포워드 프록시 설정
         ForwardingResource coap2coap = new ProxyCoapClientResource("coap2coap");
         coapServer.add(coap2coap);
 
-        //http->coap 포워드 프록시 설정
+        //http -> coap 포워드 프록시 설정
         ProxyHttpServer httpServer = new ProxyHttpServer(9090);
         httpServer.setProxyCoapResolver(new DirectProxyCoapResolver(coap2coap));
-        
-       
+
         coapServer.start();
     }
 
@@ -51,7 +48,7 @@ public class CoapResourceServer {
 
     public static void main(String[] args) throws Exception {
         CoapResourceServer server = new CoapResourceServer();
-        System.out.print("CoAP Server is listening on port 5683");
+        System.out.println("CoAP server is listening on port 5683");
         System.in.read();
         server.shutdown();
     }

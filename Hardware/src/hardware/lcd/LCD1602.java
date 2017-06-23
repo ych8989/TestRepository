@@ -12,7 +12,6 @@ import java.util.Date;
 import java.util.Enumeration;
 
 public class LCD1602 {
-
 	private I2CDevice i2cDevice;
 	private int blen = 1;
 	private String[] textArray = new String[2];
@@ -138,11 +137,13 @@ public class LCD1602 {
 			lcd1602.write(1, 0, formatter.format(new Date()));
 			Thread.sleep(1000);
 		}
-
+		
 		lcd1602.clear();
+		
 		displayIPaddress(lcd1602);
-//		Thread.sleep(5000);
+		Thread.sleep(5000);
 
+		//lcd1602.clear();
 	}
 
 	public static void displayIPaddress(LCD1602 lcd) throws Exception {
