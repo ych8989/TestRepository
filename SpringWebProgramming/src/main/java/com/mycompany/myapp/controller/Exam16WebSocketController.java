@@ -9,12 +9,12 @@ public class Exam16WebSocketController {
 	public String echoClient() {
 		return "websocket/echoClient";
 	}
-
+	
 	@RequestMapping("/websocket/measureClient")
 	public String measureClient() {
 		return "websocket/measureClient";
-	}
-
+	}	
+	
 	@RequestMapping("/websocket/chatClient")
 	public String chatClient() {
 		return "websocket/chatClient";

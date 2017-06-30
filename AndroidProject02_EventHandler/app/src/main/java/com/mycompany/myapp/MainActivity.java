@@ -1,7 +1,7 @@
 package com.mycompany.myapp;
 
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
         rbImg1 = (RadioButton) findViewById(R.id.rbImg1);
         rbImg2 = (RadioButton) findViewById(R.id.rbImg2);
 
-
         btnImg1.setOnClickListener(handleBtnImg);
         btnImg2.setOnClickListener(handleBtnImg);
         rbImg1.setOnClickListener(handleBtnImg);
@@ -33,9 +32,9 @@ public class MainActivity extends AppCompatActivity {
     private View.OnClickListener handleBtnImg = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if (v == btnImg1 || v == rbImg1) {
+            if(v == btnImg1 || v == rbImg1) {
                 imgTitle.setImageResource(R.drawable.photo1);
-            } else if (v == btnImg2 || v == rbImg2) {
+            } else if(v == btnImg2 || v == rbImg2) {
                 imgTitle.setImageResource(R.drawable.photo2);
             }
         }
@@ -48,8 +47,4 @@ public class MainActivity extends AppCompatActivity {
     public void handleRbImg3(View v) {
         imgTitle.setImageResource(R.drawable.photo3);
     }
-
 }
-
-
-

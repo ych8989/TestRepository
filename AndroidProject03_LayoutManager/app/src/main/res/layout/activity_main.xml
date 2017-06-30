@@ -7,15 +7,17 @@
     tools:context="com.mycompany.myapplication.MainActivity">
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="0dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:id="@+id/linearLayoutTop"
@@ -77,7 +79,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:drawableLeft="@mipmap/ic_launcher"
+                android:drawableLeft="@android:drawable/stat_sys_vp_phone_call"
                 android:onClick="handleButton1"
                 android:text="내용1" />
 
@@ -86,7 +88,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:drawableLeft="@mipmap/ic_launcher"
+                android:drawableLeft="@android:drawable/stat_sys_phone_call_on_hold"
                 android:onClick="handleButton2"
                 android:text="내용2" />
 
@@ -95,7 +97,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:drawableLeft="@mipmap/ic_launcher"
+                android:drawableLeft="@android:drawable/stat_sys_phone_call_forward"
                 android:onClick="handleButton3"
                 android:text="내용3" />
         </LinearLayout>
@@ -109,26 +111,23 @@
                 android:id="@+id/content1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@android:color/holo_green_dark"
-                android:orientation="vertical">
-
-            </LinearLayout>
+                android:background="@android:color/holo_green_light"
+                android:orientation="vertical"
+                android:visibility="visible"></LinearLayout>
 
             <LinearLayout
                 android:id="@+id/content2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@android:color/holo_blue_bright"
+                android:background="@android:color/holo_orange_dark"
                 android:orientation="vertical"
-                android:visibility="invisible">
-
-            </LinearLayout>
+                android:visibility="invisible"></LinearLayout>
 
             <LinearLayout
                 android:id="@+id/content3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/colorAccent"
+                android:background="@android:color/holo_blue_bright"
                 android:orientation="vertical"
                 android:visibility="invisible"></LinearLayout>
 

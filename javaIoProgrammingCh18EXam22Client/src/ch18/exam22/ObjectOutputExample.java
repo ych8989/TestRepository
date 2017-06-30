@@ -7,18 +7,15 @@ import java.io.ObjectOutputStream;
 
 public class ObjectOutputExample {
     public static void main(String[] args) throws FileNotFoundException, IOException {
-        FileOutputStream fos = new FileOutputStream("d:/Temp/object.dat");
+        FileOutputStream fos = new FileOutputStream("C:/Temp/object.dat");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         
-        Member member =  new Member("감자바", 30);
-        
+        Member member = new Member("감자바", 30);
         oos.writeObject(member);
         
         oos.flush();
         fos.flush();
         oos.close();
         fos.close();
-        
-        
     }
 }

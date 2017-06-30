@@ -29,76 +29,75 @@ public class TrackingSensorHandler extends TextWebSocketHandler implements Appli
 	private List<WebSocketSession> list = new Vector<>();
 	private CoapClient coapClient;
 	private CoapObserveRelation coapObserveRelation;
-	int value;
-
+	
 	@PostConstruct
 	public void init() {
 		coapClient = new CoapClient();
-		coapClient.setURI("coap://192.168.3.26/tracking");
-		coapObserveRelation = coapClient.observe(new CoapHandler() {
+		coapClient.setURI("coap://192.168.3.26/trackingsensor");
+		coapObserveRelation = coapClient.observe(new CoapHandler() {			
 			@Override
 			public void onLoad(CoapResponse response) {
 				String json = response.getResponseText();
+				
 				JSONObject jsonObject = new JSONObject(json);
-				String valueStr = jsonObject.getString("tracking");
-				if (valueStr.equals("black")) {
-					value = 0;
-				} else if (valueStr.equals("white")) {
-					value = 1;
-				}
-
+				String tracking = jsonObject.getString("tracking");
+				
 				jsonObject = new JSONObject();
 				jsonObject.put("time", getUTCTime(new Date().getTime()));
-				jsonObject.put("tracking", value);
+				int trackingValue = -1;
+				if(tracking.equals("black")) trackingValue= 1;
+				if(tracking.equals("white")) trackingValue= 0;
+				jsonObject.put("tracking", trackingValue);
 				json = jsonObject.toString();
-
 				try {
-					for (WebSocketSession session : list) {
+					for(WebSocketSession session : list) {
 						session.sendMessage(new TextMessage(json));
 					}
-				} catch (Exception e) {
-				}
+				} catch(Exception e) {}
 			}
-
+			
 			@Override
 			public void onError() {
 			}
 		});
 	}
-
+	
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		logger.info("");
 		list.add(session);
 	}
-
+	
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 		logger.info("");
 	}
-
+	
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
 		logger.info("");
-		list.remove(session);
+		list.remove(session);		
 	}
-
+	
 	public long getUTCTime(long localTime) {
 		long utcTime = 0;
 		TimeZone tz = TimeZone.getDefault();
 		try {
 			int offset = tz.getOffset(localTime);
 			utcTime = localTime + offset;
-		} catch (Exception e) {
-		}
+		} catch(Exception e) {}
 		return utcTime;
 	}
 
 	@Override
 	public void onApplicationEvent(ApplicationEvent event) {
-		if (event instanceof ContextClosedEvent) {
+		if(event instanceof ContextClosedEvent) {
 			coapObserveRelation.proactiveCancel();
 			coapClient.shutdown();
 		}
 	}
 }
+
+
+
+

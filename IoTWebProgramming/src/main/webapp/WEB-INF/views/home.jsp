@@ -11,7 +11,7 @@
 	</head>
 	
 	<body>
-		WebApplication Home
+		<h4>WebApplication Home</h4>
 		<hr/>
 	</body>
 </html>

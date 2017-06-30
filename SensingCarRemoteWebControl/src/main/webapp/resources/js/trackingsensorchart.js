@@ -8,25 +8,33 @@ $(function() {
 				load: requestTrackingSensorData
 			}
 		},
-		colors: ['yellow'],
+		colors: ['green'],
 		title: {
-			text: "TrackingSensor(트레킹 센서)"
+			text: "TrackingSensor(라인감지센서)"
 		},
 		xAxis: {
 			type: "datetime",
 			tickPixelInterval: 100,
-			minRange:20*1000
+			minRange: 20*1000
 		},
 		yAxis: {
 			title: {
-				text: "값",
+				text: "감지",
 				margin: 30
 			}
 		},
 		series: [{
-			name: "값",
+			name: "감지",
 			data: []
-		}]
+		}],
+		//마커(점)이 없어지는 현상 방지
+		plotOptions: {
+	        series: {
+	            marker: {
+	                enabled: true
+	            }
+	        }
+	    }
 	});
 });
 

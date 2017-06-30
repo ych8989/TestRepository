@@ -3,17 +3,17 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	version="3.1">
-
-	<!-- ContextLoaderListener -->
+	
+	<!-- ContextLoaderListener 등록-->	
+	<listener>
+		<listener-class>listener.ContextLoaderListener</listener-class>
+	</listener>
+		
 	<context-param>
 		<param-name>key1</param-name>
 		<param-value>value1</param-value>
 	</context-param>
-
-	<listener>
-		<listener-class>listener.ContextLoaderListener</listener-class>
-	</listener>
-
+	
 	<!-- CharacterEncodingFilter 등록 및 URL 매핑 -->
 	<filter>
 		<filter-name>encodingFilter</filter-name>
@@ -26,13 +26,12 @@
 	<filter-mapping>
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-
-	<!-- DispatcherServlet 등록 및 URL 매핑 / 요청을 처리하는 역할 -->
+	</filter-mapping>	
+	
+	<!-- DispatcherServlet 등록 및 URL 매핑 -->
 	<servlet>
 		<servlet-name>dispatcher</servlet-name>
 		<servlet-class>servlet.DispatcherServlet</servlet-class>
-
 		<init-param>
 			<param-name>name1</param-name>
 			<param-value>value1</param-value>
@@ -40,13 +39,13 @@
 		<init-param>
 			<param-name>name2</param-name>
 			<param-value>value2</param-value>
-		</init-param>
-		<load-on-startup>2</load-on-startup>
+		</init-param>		
+		<load-on-startup>1</load-on-startup>
 	</servlet>
-
+	
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-
+	
 </web-app>

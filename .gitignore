@@ -38,10 +38,12 @@
 /JavaFXProject/team4/ProjectFinal/dist/
 /JavaFXProject/team4/ProjectFinal/nbproject/private/
 /Hardware/nbproject/private/
-/Hardware/build/
 /Hardware/dist/
+/Hardware/build/
 /Network/nbproject/private/
 /Network/build/
 /Network/dist/
+/IoTWebProgramming/target/
+/SensingCar/nbproject/private/
+/SensingCar/build/
 /SensingCar/dist/
-/SensingCarRemoteWebControl/target/

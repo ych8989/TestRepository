@@ -10,40 +10,40 @@ import com.pi4j.io.gpio.RaspiPin;
 
 import hardware.converter.PCF8591;
 import hardware.motor.PCA9685;
-import hardware.motor.SG90ServoPC9685Duration;
+import hardware.motor.SG90ServoPCA9685Duration;
 import hardware.sensor.GasSensor;
 import hardware.sensor.UltrasonicSensor;
 
 @Component
-public class SensingCarServiceImpl implements SensingCarService {
+public class SensingCarServiceImpl implements SensingCarService{
 	@Autowired
 	private GasSensorDao gasSensorDao;
-
-	// ÇÏµå¿ş¾î PWM °ü·Ã ÇÊµå
+	
+	//í•˜ë“œì›¨ì–´ PWM ê´€ë ¨ í•„ë“œ
 	private PCA9685 pca9685;
-	// ADC °ü·Ã ÇÊµå
-	// ÃÊÀ½ÆÄ ¼¾¼­ °ü·Ã ÇÊµå
-	private SG90ServoPC9685Duration ultrasonicSensorServo;
+	
+	//ì´ˆìŒíŒŒ ì„¼ì„œ ê´€ë ¨ í•„ë“œ
+	private SG90ServoPCA9685Duration ultrasonicSensorServo;
 	private UltrasonicSensor ultrasonicSensor;
-	// Gas ¼¾¼­ °ü·Ã ÇÊµå
+	
+	//Gas ì„¼ì„œ ê´€ë ¨ í•„ë“œ
 	private PCF8591 gasSensorPCF8591;
 	private GasSensor gasSensor;
-
+	
 	@PostConstruct
 	public void init() throws Exception {
 		pca9685 = PCA9685.getInstance();
-
-		ultrasonicSensorServo = new SG90ServoPC9685Duration(pca9685, PCA9685.PWM_11);
+		
+		ultrasonicSensorServo = new SG90ServoPCA9685Duration(pca9685, PCA9685.PWM_11);
 		ultrasonicSensor = new UltrasonicSensor(RaspiPin.GPIO_28, RaspiPin.GPIO_29);
 
 		gasSensorPCF8591 = new PCF8591(0x48, PCF8591.AIN2);
 		gasSensor = new GasSensor(gasSensorPCF8591, RaspiPin.GPIO_23);
 	}
-
+	
 	@Override
 	public void changeUltrasonicSensorAngle(int angle) throws Exception {
-		ultrasonicSensorServo.setAngle(angle);
-
+		ultrasonicSensorServo.setAngle(angle);		
 	}
 
 	@Override
@@ -54,14 +54,22 @@ public class SensingCarServiceImpl implements SensingCarService {
 
 	@Override
 	public double getGasSensorValue() throws Exception {
-		// ¼¾¼­·ÎºÎÅÍ ÃøÁ¤°ª ¹Ş±â
+		//ì„¼ì„œë¡œë¶€í„° ì¸¡ì •ê°’ ë°›ê¸°
 		double value = gasSensor.getValue();
-
-		// DB¿¡ ÀúÀå
+		
+		//DBì— ì €ì¥
 		com.mycompany.myapp.dto.GasSensor gasSensorBean = new com.mycompany.myapp.dto.GasSensor();
 		gasSensorBean.setGvalue(value);
 		gasSensorDao.insert(gasSensorBean);
-
+		
 		return value;
 	}
 }
+
+
+
+
+
+
+
+

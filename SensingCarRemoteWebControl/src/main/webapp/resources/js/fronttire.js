@@ -8,7 +8,6 @@ function fronttire(command, angle) {
 		success: function(data) {
 			if(data.result == "success") {
 				$("#fronttireStatus").html("angle=" + data.angle);
-			
 			}
 		}
 	});

@@ -8,21 +8,23 @@ import sensingcar.coap.server.CoapResourceServer;
 public class SensingCar {
 	//Field
 	private static final Logger logger = LoggerFactory.getLogger(SensingCar.class);
-        private CoapResourceServer coapResourceServer;
+	private CoapResourceServer coapResourceServer;
+	
 	//Constructor
-        public SensingCar () throws Exception{
-        coapResourceServer=new CoapResourceServer();
-}
+	public SensingCar() throws Exception {
+		coapResourceServer = new CoapResourceServer();
+	}
+	
 	//Method
 	public void start() {
 		logger.info("실행");
-                coapResourceServer.start();
+		coapResourceServer.start();
 		System.out.println("SensingCar start");
 	}
 	
 	public void stop() {
 		logger.info("실행");
-                coapResourceServer.stop();
+		coapResourceServer.stop();
 		System.out.println("SensingCar stop");
 	}
 	

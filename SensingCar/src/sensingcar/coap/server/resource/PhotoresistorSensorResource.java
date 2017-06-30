@@ -2,6 +2,7 @@ package sensingcar.coap.server.resource;
 
 import hardware.converter.PCF8591;
 import hardware.sensor.PhotoresistorSensor;
+import hardware.sensor.ThermistorSensor;
 import org.eclipse.californium.core.CoapResource;
 import org.eclipse.californium.core.coap.CoAP;
 import org.eclipse.californium.core.server.resources.CoapExchange;
@@ -18,7 +19,7 @@ public class PhotoresistorSensorResource extends CoapResource {
 	
 	//Constructor
 	public PhotoresistorSensorResource() throws Exception {
-		super("photoresistor");
+		super("photoresistorsensor");
 		setObservable(true);
 		getAttributes().setObservable();
 		setObserveType(CoAP.Type.NON);

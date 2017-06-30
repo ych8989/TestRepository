@@ -18,7 +18,7 @@ public class Content1 extends LinearLayout {
         itemContainer = (LinearLayout) findViewById(R.id.itemContainer);
     }
 
-    public void addItem(Item item) {
+    public void addItem(Item1 item) {
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View view = inflater.inflate(R.layout.content1_item, null);
 

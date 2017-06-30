@@ -28,7 +28,7 @@ public class CameraResource extends CoapResource {
 		leftRightMotor = new SG90ServoPCA9685Duration(pca9685, PCA9685.PWM_14);
 		upDownMotor = new SG90ServoPCA9685Duration(pca9685, PCA9685.PWM_15);
 		turnLeftRight(90);
-		turnUpDown(20);
+		turnUpDown(10);
 	}
 	
 	//Method
@@ -72,6 +72,7 @@ public class CameraResource extends CoapResource {
 			String responseJson = responseJsonObject.toString();
 			exchange.respond(responseJson);
 		} catch(Exception e) {
+			logger.info(e.toString());
 			JSONObject responseJsonObject = new JSONObject();
 			responseJsonObject.put("result", "fail");
 			String responseJson = responseJsonObject.toString();

@@ -46,7 +46,7 @@
 			function handleBtnSend() {
 				var strName = $("#txtName").val();
 				var strMessage = $("#txtMessage").val();
-				ws.send("<" + strName + "> " + strMessage);
+				ws.send("&lt;" + strName + "&gt; " + strMessage);
 			}
 			
 			function display(message) {

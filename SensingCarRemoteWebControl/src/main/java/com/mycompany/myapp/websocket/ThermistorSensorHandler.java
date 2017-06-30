@@ -29,73 +29,72 @@ public class ThermistorSensorHandler extends TextWebSocketHandler implements App
 	private List<WebSocketSession> list = new Vector<>();
 	private CoapClient coapClient;
 	private CoapObserveRelation coapObserveRelation;
-
+	
 	@PostConstruct
 	public void init() {
 		coapClient = new CoapClient();
 		coapClient.setURI("coap://192.168.3.26/thermistorsensor");
-		coapObserveRelation = coapClient.observe(new CoapHandler() {
+		coapObserveRelation = coapClient.observe(new CoapHandler() {			
 			@Override
 			public void onLoad(CoapResponse response) {
 				String json = response.getResponseText();
 				JSONObject jsonObject = new JSONObject(json);
 				double doubleT = Double.parseDouble(jsonObject.getString("temperature"));
-
-				double temperature = ((int) (doubleT * 10)) / 10.0;
-				// int temperature = (int) doubleT;
-
+				double temperature = ((int)(doubleT*10))/10.0;
+				
 				jsonObject = new JSONObject();
 				jsonObject.put("time", getUTCTime(new Date().getTime()));
 				jsonObject.put("temperature", temperature);
 				json = jsonObject.toString();
-
 				try {
-					for (WebSocketSession session : list) {
+					for(WebSocketSession session : list) {
 						session.sendMessage(new TextMessage(json));
 					}
-				} catch (Exception e) {
-				}
+				} catch(Exception e) {}
 			}
-
+			
 			@Override
 			public void onError() {
 			}
 		});
 	}
-
+	
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		logger.info("");
 		list.add(session);
 	}
-
+	
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 		logger.info("");
 	}
-
+	
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
 		logger.info("");
-		list.remove(session);
+		list.remove(session);		
 	}
-
+	
 	public long getUTCTime(long localTime) {
 		long utcTime = 0;
 		TimeZone tz = TimeZone.getDefault();
 		try {
 			int offset = tz.getOffset(localTime);
 			utcTime = localTime + offset;
-		} catch (Exception e) {
-		}
+		} catch(Exception e) {}
 		return utcTime;
 	}
 
 	@Override
 	public void onApplicationEvent(ApplicationEvent event) {
-		if (event instanceof ContextClosedEvent) {
+		if(event instanceof ContextClosedEvent) {
 			coapObserveRelation.proactiveCancel();
 			coapClient.shutdown();
 		}
 	}
 }
+
+
+
+

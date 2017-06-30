@@ -1,4 +1,4 @@
-var gassensorchart;
+var gasSensorChart;
 $(function() {
 	gasSensorChart = new Highcharts.Chart({
 		chart: {
@@ -8,14 +8,14 @@ $(function() {
 				load: requestGasSensorData
 			}
 		},
-		colors: ['black'],
+		colors: ['yellow'],
 		title: {
 			text: "GasSensor(가스센서)"
 		},
 		xAxis: {
 			type: "datetime",
 			tickPixelInterval: 100,
-			minRange:20*1000
+			minRange: 20*1000
 		},
 		yAxis: {
 			title: {
@@ -26,7 +26,15 @@ $(function() {
 		series: [{
 			name: "가스",
 			data: []
-		}]
+		}],
+		//마커(점)이 없어지는 현상 방지
+		plotOptions: {
+	        series: {
+	            marker: {
+	                enabled: true
+	            }
+	        }
+	    }
 	});
 });
 

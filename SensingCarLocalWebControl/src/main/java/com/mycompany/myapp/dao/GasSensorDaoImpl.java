@@ -13,16 +13,16 @@ import com.mycompany.myapp.dto.GasSensor;
 @Component
 public class GasSensorDaoImpl implements GasSensorDao {
 	private static final Logger logger = LoggerFactory.getLogger(GasSensorDaoImpl.class);
-
+	
 	@Autowired
 	private SqlSessionTemplate sst;
-
+	
 	@Override
 	public List<GasSensor> selectByAll() {
 		logger.info("");
 		return sst.selectList("gassensor.selectByAll");
 	}
-
+	
 	@Override
 	public int insert(GasSensor gasSensor) {
 		sst.insert("gassensor.insert", gasSensor);

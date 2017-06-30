@@ -1,9 +1,8 @@
 package com.mycompany.myapp;
 
-import android.app.Dialog;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -44,18 +43,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Log.i(Utils.getTag(), "실행");
-        if (item.getItemId() == R.id.action_full_activity) {
+        if(item.getItemId() == R.id.action_full_activity) {
             Intent intent = new Intent(this, FullActivity.class);
             startActivity(intent);
-        } else if (item.getItemId() == R.id.action_dialgo_activity) {
+        } else if(item.getItemId() == R.id.action_dialog_activity) {
             Intent intent = new Intent(this, DialogActivity.class);
             startActivity(intent);
-
         }
         return super.onOptionsItemSelected(item);
     }
 
-    //#############################################################################################################################
+    //######################################################
+
     @Override
     protected void onPause() {
         Log.i(Utils.getTag(), "실행");
