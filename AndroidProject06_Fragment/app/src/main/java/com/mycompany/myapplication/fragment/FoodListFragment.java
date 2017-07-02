@@ -14,8 +14,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.mycompany.myapplication.R;
-import com.mycompany.myapplication.content.FoodList;
-import com.mycompany.myapplication.content.ReviewList;
 import com.mycompany.myapplication.dto.Food;
 
 import java.util.ArrayList;

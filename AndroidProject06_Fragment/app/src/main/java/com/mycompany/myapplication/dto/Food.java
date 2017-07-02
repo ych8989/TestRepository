@@ -7,9 +7,7 @@ public class Food {
     private int fstar;
     private String fdesc;
 
-    public int getFno() {
-        return fno;
-    }
+    public int getFno() {return fno;}
 
     public void setFno(int fno) {
         this.fno = fno;

@@ -39,7 +39,6 @@ public class PhotoresistorSensorHandler extends TextWebSocketHandler implements 
 			public void onLoad(CoapResponse response) {
 				String json = response.getResponseText();
 				
-				logger.info(json);
 				
 				JSONObject jsonObject = new JSONObject(json);
 				double photoresistor = Double.parseDouble(jsonObject.getString("photoresistor"));

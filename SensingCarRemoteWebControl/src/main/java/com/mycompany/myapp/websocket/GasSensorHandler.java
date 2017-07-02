@@ -39,7 +39,6 @@ public class GasSensorHandler extends TextWebSocketHandler implements Applicatio
 			public void onLoad(CoapResponse response) {
 				String json = response.getResponseText();
 				
-				logger.info(json);
 				
 				JSONObject jsonObject = new JSONObject(json);
 				double gas = Double.parseDouble(jsonObject.getString("gas"));
