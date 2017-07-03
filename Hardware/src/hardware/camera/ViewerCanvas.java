@@ -14,7 +14,10 @@ import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
 import sun.awt.image.IntegerComponentRaster;
 
-
+/**
+ *
+ * @author blueskii
+ */
 public class ViewerCanvas extends Canvas implements  ImageChangeListener, Runnable {
     private GraphicsContext gc;
     private CamStream camStream;
