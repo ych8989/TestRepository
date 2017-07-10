@@ -1,8 +1,6 @@
 package coap.exam02.server;
 
 import test.CoapResource01;
-import coap.exam01.server.*;
-import java.io.IOException;
 import java.net.InetSocketAddress;
 import org.eclipse.californium.core.CoapServer;
 import org.eclipse.californium.core.network.CoapEndpoint;
